@@ -1,0 +1,69 @@
+{
+  "name": "semantic-ui-react-numberinput",
+  "version": "1.0.0",
+  "description": "Numeric input control with step buttons for Semantic UI React",
+  "main": "lib/NumberInput.js",
+  "scripts": {
+    "build": "babel ./src --out-dir ./lib --source-maps --ignore \"src/**/*.test.js\",\"src/setupTests.js\"",
+    "flow": "flow",
+    "lint": "eslint ./src",
+    "prebuild": "npm run prettier && npm run flow && npm run lint && npm run test",
+    "prepublishOnly": "npm run build",
+    "prettier": "prettier --check \"src/**/*.js\"",
+    "test": "jest ./src"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pksilen/semantic-ui-react-numberinput.git"
+  },
+  "keywords": [
+    "React",
+    "Semantic UI",
+    "Number",
+    "Numeric",
+    "Input"
+  ],
+  "author": "Petri Silen",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pksilen/semantic-ui-react-numberinput/issues"
+  },
+  "homepage": "https://github.com/pksilen/semantic-ui-react-numberinput#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.5.5",
+    "@babel/core": "^7.5.5",
+    "@babel/plugin-proposal-class-properties": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "@babel/preset-flow": "^7.0.0",
+    "@babel/preset-react": "^7.0.0",
+    "babel-eslint": "^10.0.2",
+    "babel-jest": "^24.8.0",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.14.0",
+    "eslint": "^6.1.0",
+    "eslint-config-airbnb": "^18.0.0",
+    "eslint-plugin-flowtype": "^4.2.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jest": "^22.15.1",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.14.3",
+    "eslint-plugin-react-hooks": "^1.7.0",
+    "flow-bin": "^0.105.2",
+    "jest": "^24.8.0",
+    "prettier": "^1.18.2",
+    "prop-types": "^15.7.2",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "semantic-ui-react": "^0.87.3"
+  },
+  "jest": {
+    "setupFilesAfterEnv": [
+      "<rootDir>/src/setupTests.js"
+    ]
+  },
+  "prettier": {
+    "printWidth": 110,
+    "tabWidth": 2,
+    "singleQuote": true
+  }
+}

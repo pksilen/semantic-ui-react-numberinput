@@ -1,0 +1,35 @@
+{
+  "extends": ["airbnb", "plugin:flowtype/recommended"],
+  "parser": "babel-eslint",
+  "env": {
+    "browser": true,
+    "jest": true
+  },
+  "plugins": ["flowtype", "jest"],
+  "rules": {
+    "comma-dangle": "off",
+    "operator-linebreak": "off",
+    "implicit-arrow-linebreak": "off",
+    "function-paren-newline": "off",
+    "object-curly-newline": "off",
+    "import/no-extraneous-dependencies": "off",
+    "react/require-default-props": [1, { "forbidDefaultForRequired": false }],
+    "react/default-props-match-prop-types": [1, { "allowRequiredDefaults": true}],
+    "react/static-property-placement": [1, "static public field"],
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "flowtype/require-parameter-type": 2,
+    "flowtype/require-return-type": [
+      2,
+      "always",
+      {
+        "annotateUndefined": "never",
+        "excludeArrowFunctions": "expressionsOnly"
+      }
+    ]
+  },
+  "settings": {
+    "flowtype": {
+      "onlyFilesWithFlowAnnotation": true
+    }
+  }
+}

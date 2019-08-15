@@ -10,7 +10,6 @@ beforeEach(() => {
 });
 
 test('NumberInput should render correctly', () => {
-
   const numberInput = renderShallow(<NumberInput value="1" onChange={onChangeMock} />);
   expect(numberInput).toMatchSnapshot();
 });

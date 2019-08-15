@@ -32,6 +32,7 @@ const style = {
   },
   leftAndRightButtonStyle: {
     borderRadius: 0,
+    lineHeight: 'calc(1em + 2px)',
     margin: 0
   },
   rightButtonStyle: {

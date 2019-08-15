@@ -5,11 +5,14 @@ import type { Element } from 'react';
 import PropTypes from 'prop-types';
 import { Button } from 'semantic-ui-react';
 
+type ButtonPlacement = 'right' | 'leftAndRight';
+
 type Props = {
-  id: string,
   value: string,
   onChange: (newValue: string) => void,
+  buttonPlacement: ButtonPlacement,
   className: string,
+  id: string,
   minValue: number,
   maxValue: number,
   maxLength: number,
@@ -17,10 +20,29 @@ type Props = {
   stepCount: number
 };
 
-const buttonStyle = {
+type ButtonType = 'increment' | 'decrement';
+
+const outerDivStyle = {
+  display: 'flex'
+};
+
+const buttonGroupDivStyle = {
+  display: 'flex',
+  flexDirection: 'column'
+};
+
+const leftAndRightButtonStyle = {
   borderRadius: 0,
-  lineHeight: 'calc(1em + 2px)',
   margin: 0
+};
+
+const rightButtonStyle = {
+  borderRadius: 0,
+  flex: '0 0 50%',
+  minHeight: 'unset',
+  margin: 0,
+  maxHeight: 'unset',
+  padding: '0 0.2em'
 };
 
 const inputStyle = {
@@ -31,7 +53,6 @@ const inputStyle = {
 // noinspection JSUnusedGlobalSymbols
 export default class NumberInput extends React.Component<Props, {}> {
   static propTypes = {
-    id: PropTypes.string,
     // eslint-disable-next-line react/require-default-props
     value(props: Props): ?Error {
       if (!props.value) {
@@ -43,7 +64,9 @@ export default class NumberInput extends React.Component<Props, {}> {
       return null;
     },
     onChange: PropTypes.func.isRequired,
+    buttonPlacement: PropTypes.oneOf(['right', 'leftAndRight']),
     className: PropTypes.string,
+    id: PropTypes.string,
     minValue(props: Props): ?Error {
       if (!Number.isSafeInteger(props.minValue)) {
         return new Error('minValue must be an integer');
@@ -78,8 +101,9 @@ export default class NumberInput extends React.Component<Props, {}> {
   };
 
   static defaultProps = {
-    id: null,
+    buttonPlacement: 'leftAndRight',
     className: null,
+    id: null,
     minValue: Number.MIN_SAFE_INTEGER,
     maxValue: Number.MAX_SAFE_INTEGER,
     maxLength: 10,
@@ -122,40 +146,86 @@ export default class NumberInput extends React.Component<Props, {}> {
     }
   };
 
-  render(): Element<*> {
-    const { className, id, maxLength, maxValue, minValue, size, stepCount, value } = this.props;
-    const valueAsInteger = parseInt(value, 10);
-    const valueIsNotANumber = Number.isNaN(valueAsInteger);
+  getInputComponent = (): Element<*> => {
+    const { maxLength, size, value } = this.props;
 
     return (
-      <div id={id} className={className}>
-        <Button
-          size={size}
-          style={buttonStyle}
-          icon="minus"
-          onClick={this.decrementValue}
-          disabled={valueIsNotANumber || valueAsInteger - stepCount <= minValue}
+      <div className={`ui input ${size}`}>
+        <input
+          type="text"
+          style={inputStyle}
+          maxLength={maxLength}
+          value={value}
+          onChange={this.changeValue}
         />
-        <div className={`ui input ${size}`}>
-          <input
-            type="text"
-            style={inputStyle}
-            maxLength={maxLength}
-            value={value}
-            onChange={this.changeValue}
-          />
+      </div>
+    );
+  };
+
+  getButtonComponent = (buttonType: ButtonType): Element<*> => {
+    const { buttonPlacement, size } = this.props;
+
+    return (
+      <Button
+        size={size}
+        style={buttonPlacement === 'right' ? rightButtonStyle : leftAndRightButtonStyle}
+        icon={this.getButtonIconName(buttonType, buttonPlacement)}
+        onClick={buttonType === 'increment' ? this.incrementValue : this.decrementValue}
+        disabled={this.isDisabledButton(buttonType)}
+      />
+    );
+  };
+
+  getButtonIconName = (buttonType: ButtonType, buttonPlacement: ButtonPlacement): string => {
+    if (buttonPlacement === 'right') {
+      if (buttonType === 'increment') {
+        return 'caret up';
+      }
+      return 'caret down';
+    }
+
+    if (buttonType === 'increment') {
+      return 'plus';
+    }
+    return 'minus';
+  };
+
+  isDisabledButton = (buttonType: ButtonType): boolean => {
+    const { maxLength, maxValue, minValue, stepCount, value } = this.props;
+    const valueAsInteger = parseInt(value, 10);
+    const valueIsNotANumber = Number.isNaN(valueAsInteger);
+    const nextIncrementedValue = valueAsInteger + stepCount;
+
+    if (buttonType === 'increment') {
+      return (
+        valueIsNotANumber ||
+        nextIncrementedValue >= maxValue ||
+        nextIncrementedValue.toString().length > maxLength
+      );
+    }
+    return valueIsNotANumber || valueAsInteger - stepCount <= minValue;
+  };
+
+  render(): Element<*> {
+    const { buttonPlacement, className, id } = this.props;
+
+    if (buttonPlacement === 'leftAndRight') {
+      return (
+        <div id={id} className={className}>
+          {this.getButtonComponent('decrement')}
+          {this.getInputComponent()}
+          {this.getButtonComponent('increment')}
         </div>
-        <Button
-          size={size}
-          style={buttonStyle}
-          icon="plus"
-          onClick={this.incrementValue}
-          disabled={
-            valueIsNotANumber ||
-            valueAsInteger + stepCount >= maxValue ||
-            (valueAsInteger + stepCount).toString().length > maxLength
-          }
-        />
+      );
+    }
+
+    return (
+      <div id={id} className={className} style={outerDivStyle}>
+        {this.getInputComponent()}
+        <div style={buttonGroupDivStyle}>
+          {this.getButtonComponent('increment')}
+          {this.getButtonComponent('decrement')}
+        </div>
       </div>
     );
   }

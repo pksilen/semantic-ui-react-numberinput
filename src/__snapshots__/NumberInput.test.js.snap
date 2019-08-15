@@ -1,3 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`NumberInput should render correctly 1`] = `ShallowWrapper {}`;
+
+exports[`NumberInput should render correctly when buttonPlacement is right 1`] = `ShallowWrapper {}`;

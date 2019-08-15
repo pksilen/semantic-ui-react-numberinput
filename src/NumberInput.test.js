@@ -9,6 +9,12 @@ test('NumberInput should render correctly', () => {
   expect(numberInput).toMatchSnapshot();
 });
 
+test('NumberInput should render correctly when buttonPlacement is right', () => {
+  const onChangeMock = jest.fn();
+  const numberInput = renderShallow(<NumberInput buttonPlacement="right" value="1" onChange={onChangeMock} />);
+  expect(numberInput).toMatchSnapshot();
+});
+
 test('NumberInput sets default props correctly', () => {
   const onChangeMock = jest.fn();
   const numberInput = mount(<NumberInput value="1" onChange={onChangeMock} />);
@@ -16,6 +22,7 @@ test('NumberInput sets default props correctly', () => {
   expect(numberInput.props().value).toBe('1');
   expect(numberInput.props().onChange).toBe(onChangeMock);
   expect(numberInput.props().id).toBe(null);
+  expect(numberInput.props().buttonPlacement).toBe('leftAndRight');
   expect(numberInput.props().className).toBe(null);
   expect(numberInput.props().minValue).toBe(Number.MIN_SAFE_INTEGER);
   expect(numberInput.props().maxValue).toBe(Number.MAX_SAFE_INTEGER);

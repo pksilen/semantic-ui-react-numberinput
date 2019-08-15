@@ -8,7 +8,6 @@
     "flow": "flow",
     "install-flow-types": "flow-typed install",
     "lint": "eslint ./src",
-    "postinstall": "npm run install-flow-types",
     "prebuild": "npm run prettier && npm run flow && npm run lint && npm run test",
     "prepublishOnly": "npm run build",
     "prettier": "prettier --check \"src/**/*.js\"",

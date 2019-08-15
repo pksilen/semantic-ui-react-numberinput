@@ -3,20 +3,24 @@ import { mount, shallow as renderShallow } from 'enzyme';
 import { Button } from 'semantic-ui-react';
 import NumberInput from './NumberInput';
 
+let onChangeMock;
+
+beforeEach(() => {
+  onChangeMock = jest.fn();
+});
+
 test('NumberInput should render correctly', () => {
-  const onChangeMock = jest.fn();
+
   const numberInput = renderShallow(<NumberInput value="1" onChange={onChangeMock} />);
   expect(numberInput).toMatchSnapshot();
 });
 
 test('NumberInput should render correctly when buttonPlacement is right', () => {
-  const onChangeMock = jest.fn();
   const numberInput = renderShallow(<NumberInput buttonPlacement="right" value="1" onChange={onChangeMock} />);
   expect(numberInput).toMatchSnapshot();
 });
 
 test('NumberInput sets default props correctly', () => {
-  const onChangeMock = jest.fn();
   const numberInput = mount(<NumberInput value="1" onChange={onChangeMock} />);
 
   expect(numberInput.props().value).toBe('1');
@@ -32,7 +36,6 @@ test('NumberInput sets default props correctly', () => {
 });
 
 test('pressing NumberInput´s decrement button decrements value', () => {
-  const onChangeMock = jest.fn();
   const numberInput = mount(<NumberInput value="1" onChange={onChangeMock} />);
   const decrementButton = numberInput.find('button').first();
 
@@ -42,7 +45,6 @@ test('pressing NumberInput´s decrement button decrements value', () => {
 });
 
 test('pressing NumberInput´s increment button increments value', () => {
-  const onChangeMock = jest.fn();
   const numberInput = mount(<NumberInput value="1" onChange={onChangeMock} />);
   const incrementButton = numberInput.find('button').last();
 
@@ -52,7 +54,6 @@ test('pressing NumberInput´s increment button increments value', () => {
 });
 
 test('NumberInput´s increment button with negative value', () => {
-  const onChangeMock = jest.fn();
   const numberInput = mount(<NumberInput value="-2" onChange={onChangeMock} />);
   const incrementButton = numberInput.find('button').last();
 
@@ -62,7 +63,6 @@ test('NumberInput´s increment button with negative value', () => {
 });
 
 test('pressing NumberInput´s decrement button decrements value by given stepCount', () => {
-  const onChangeMock = jest.fn();
   const numberInput = mount(<NumberInput value="3" stepCount={2} onChange={onChangeMock} />);
   const decrementButton = numberInput.find('button').first();
 
@@ -72,7 +72,6 @@ test('pressing NumberInput´s decrement button decrements value by given stepCou
 });
 
 test('pressing NumberInput´s increment button increments value by given stepCount', () => {
-  const onChangeMock = jest.fn();
   const numberInput = mount(<NumberInput value="1" stepCount={2} onChange={onChangeMock} />);
   const incrementButton = numberInput.find('button').last();
 
@@ -82,7 +81,6 @@ test('pressing NumberInput´s increment button increments value by given stepCou
 });
 
 test('NumberInput´s decrement button with negative value', () => {
-  const onChangeMock = jest.fn();
   const numberInput = mount(<NumberInput value="-2" onChange={onChangeMock} />);
   const decrementButton = numberInput.find('button').first();
 
@@ -92,7 +90,6 @@ test('NumberInput´s decrement button with negative value', () => {
 });
 
 test('pressing NumberInput`s decrement button does not decrement value beyond minimum safe integer value', () => {
-  const onChangeMock = jest.fn();
   const numberInput = mount(
     <NumberInput value={Number.MIN_SAFE_INTEGER.toString()} onChange={onChangeMock} />
   );
@@ -104,7 +101,6 @@ test('pressing NumberInput`s decrement button does not decrement value beyond mi
 });
 
 test('pressing NumberInput´s increment button does not increment value beyond maximum safe integer value', () => {
-  const onChangeMock = jest.fn();
   const numberInput = mount(
     <NumberInput value={Number.MAX_SAFE_INTEGER.toString()} onChange={onChangeMock} />
   );
@@ -116,7 +112,6 @@ test('pressing NumberInput´s increment button does not increment value beyond m
 });
 
 test('pressing NumberInput´s decrement button does not decrement value if current value is minValue', () => {
-  const onChangeMock = jest.fn();
   const numberInput = mount(<NumberInput value="5" minValue={5} onChange={onChangeMock} />);
   const decrementButton = numberInput.find('button').first();
 
@@ -127,7 +122,6 @@ test('pressing NumberInput´s decrement button does not decrement value if curre
 });
 
 test('pressing NumberInput´s decrement button does not decrement value beyond minValue', () => {
-  const onChangeMock = jest.fn();
   const numberInput = mount(<NumberInput value="5" minValue={4} stepCount={2} onChange={onChangeMock} />);
   const decrementButton = numberInput.find('button').first();
 
@@ -138,7 +132,6 @@ test('pressing NumberInput´s decrement button does not decrement value beyond m
 });
 
 test('pressing NumberInput´s increment button does not increment value if current value is maxValue', () => {
-  const onChangeMock = jest.fn();
   const numberInput = mount(<NumberInput value="5" maxValue={5} onChange={onChangeMock} />);
   const incrementButton = numberInput.find('button').last();
 
@@ -149,7 +142,6 @@ test('pressing NumberInput´s increment button does not increment value if curre
 });
 
 test('pressing NumberInput´s increment button does not increment value beyond given maxValue', () => {
-  const onChangeMock = jest.fn();
   const numberInput = mount(<NumberInput value="4" maxValue={5} stepCount={2} onChange={onChangeMock} />);
   const incrementButton = numberInput.find('button').last();
 
@@ -160,7 +152,6 @@ test('pressing NumberInput´s increment button does not increment value beyond g
 });
 
 test('changing NumberInput´s input value', () => {
-  const onChangeMock = jest.fn();
   const numberInput = mount(<NumberInput value="1" onChange={onChangeMock} />);
   const input = numberInput.find('input');
 
@@ -170,7 +161,6 @@ test('changing NumberInput´s input value', () => {
 });
 
 test('trying to change NumberInput´s input value beyond minValue', () => {
-  const onChangeMock = jest.fn();
   const numberInput = mount(<NumberInput value="1" minValue={0} onChange={onChangeMock} />);
   const input = numberInput.find('input');
 
@@ -180,7 +170,6 @@ test('trying to change NumberInput´s input value beyond minValue', () => {
 });
 
 test('trying to change NumberInput´s input value beyond maxValue', () => {
-  const onChangeMock = jest.fn();
   const numberInput = mount(<NumberInput value="1" maxValue={10} onChange={onChangeMock} />);
   const input = numberInput.find('input');
 
@@ -190,7 +179,6 @@ test('trying to change NumberInput´s input value beyond maxValue', () => {
 });
 
 test('trying to change NumberInput´s input value to non-numeric value', () => {
-  const onChangeMock = jest.fn();
   const numberInput = mount(<NumberInput value="1" onChange={onChangeMock} />);
   const input = numberInput.find('input');
 
@@ -200,7 +188,6 @@ test('trying to change NumberInput´s input value to non-numeric value', () => {
 });
 
 test('className prop sets className for outer div', () => {
-  const onChangeMock = jest.fn();
   const numberInput = mount(<NumberInput className="test" value="1" onChange={onChangeMock} />);
   const outerDiv = numberInput.find('div').first();
 
@@ -208,14 +195,11 @@ test('className prop sets className for outer div', () => {
 });
 
 test('id prop sets id for outer div', () => {
-  const onChangeMock = jest.fn();
   const numberInput = mount(<NumberInput id="numberInput1" value="1" onChange={onChangeMock} />);
-
   expect(numberInput.exists('div#numberInput1')).toBe(true);
 });
 
 test('NumberInput should work correctly when trying to change input value beyond maxLength', () => {
-  const onChangeMock = jest.fn();
   const numberInput = mount(<NumberInput value="99" maxLength={2} onChange={onChangeMock} />);
   const input = numberInput.find('input');
 
@@ -227,7 +211,6 @@ test('NumberInput should work correctly when trying to change input value beyond
 });
 
 test('NumberInput should work correctly when trying to increment value beyond maxLength', () => {
-  const onChangeMock = jest.fn();
   const numberInput = mount(<NumberInput value="99" maxLength={2} onChange={onChangeMock} />);
   const incrementButton = numberInput.find('button').last();
 
@@ -238,7 +221,6 @@ test('NumberInput should work correctly when trying to increment value beyond ma
 });
 
 test('size prop is correctly propagated to sub components', () => {
-  const onChangeMock = jest.fn();
   const numberInput = mount(<NumberInput value="99" size="mini" onChange={onChangeMock} />);
   const decrementButton = numberInput.find(Button).first();
   const incrementButton = numberInput.find(Button).last();
@@ -251,7 +233,6 @@ test('size prop is correctly propagated to sub components', () => {
 
 test('Additional props validation', () => {
   const NON_INTEGER_VALUE = 1.1;
-  const onChangeMock = jest.fn();
   const consoleErrorSpy = jest.spyOn(global.console, 'error');
 
   renderShallow(<NumberInput value="" onChange={onChangeMock} />);

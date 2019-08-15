@@ -22,32 +22,30 @@ type Props = {
 
 type ButtonType = 'increment' | 'decrement';
 
-const outerDivStyle = {
-  display: 'flex'
-};
-
-const buttonGroupDivStyle = {
-  display: 'flex',
-  flexDirection: 'column'
-};
-
-const leftAndRightButtonStyle = {
-  borderRadius: 0,
-  margin: 0
-};
-
-const rightButtonStyle = {
-  borderRadius: 0,
-  flex: '0 0 50%',
-  minHeight: 'unset',
-  margin: 0,
-  maxHeight: 'unset',
-  padding: '0 0.2em'
-};
-
-const inputStyle = {
-  borderRadius: 0,
-  textAlign: 'right'
+const style = {
+  outerDivStyle: {
+    display: 'flex'
+  },
+  buttonGroupDivStyle: {
+    display: 'flex',
+    flexDirection: 'column'
+  },
+  leftAndRightButtonStyle: {
+    borderRadius: 0,
+    margin: 0
+  },
+  rightButtonStyle: {
+    borderRadius: 0,
+    flex: '0 0 50%',
+    minHeight: 'unset',
+    margin: 0,
+    maxHeight: 'unset',
+    padding: '0 0.2em'
+  },
+  inputStyle: {
+    borderRadius: 0,
+    textAlign: 'right'
+  }
 };
 
 // noinspection JSUnusedGlobalSymbols
@@ -153,7 +151,7 @@ export default class NumberInput extends React.Component<Props, {}> {
       <div className={`ui input ${size}`}>
         <input
           type="text"
-          style={inputStyle}
+          style={style.inputStyle}
           maxLength={maxLength}
           value={value}
           onChange={this.changeValue}
@@ -168,7 +166,7 @@ export default class NumberInput extends React.Component<Props, {}> {
     return (
       <Button
         size={size}
-        style={buttonPlacement === 'right' ? rightButtonStyle : leftAndRightButtonStyle}
+        style={buttonPlacement === 'right' ? style.rightButtonStyle : style.leftAndRightButtonStyle}
         icon={this.getButtonIconName(buttonType, buttonPlacement)}
         onClick={buttonType === 'increment' ? this.incrementValue : this.decrementValue}
         disabled={this.isDisabledButton(buttonType)}
@@ -220,9 +218,9 @@ export default class NumberInput extends React.Component<Props, {}> {
     }
 
     return (
-      <div id={id} className={className} style={outerDivStyle}>
+      <div id={id} className={className} style={style.outerDivStyle}>
         {this.getInputComponent()}
-        <div style={buttonGroupDivStyle}>
+        <div style={style.buttonGroupDivStyle}>
           {this.getButtonComponent('increment')}
           {this.getButtonComponent('decrement')}
         </div>

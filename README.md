@@ -1,6 +1,8 @@
 # semantic-ui-react-numberinput
 Numeric input control with step buttons for Semantic UI React
 
+![Example image of numberInput](https://raw.githubusercontent.com/pksilen/semantic-ui-react-numberinput/master/example/number_input.png)
+
 ## Prerequisites
     "react": "^16.0.0",
     "react-dom": "^16.0.0",

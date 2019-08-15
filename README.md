@@ -41,7 +41,7 @@ Numeric input control with step buttons for Semantic UI React
          maxValue?: number, // must be integer
          maxLength?: number, // must be positive integer
          size?: 'mini' | 'small' | 'large' | 'big' | 'huge' | 'massive',
-         stepCount?: number, //must be positive integer
+         stepCount?: number, // must be positive integer
          
 ## Default values for props
         className: '',
@@ -56,12 +56,12 @@ Numeric input control with step buttons for Semantic UI React
 
    styles.css
    
-    .numberInput .ui.button {
+    .numberInput > .ui.button {
       background-color: red;
       color: white;
     }
     
-    .numberInput .ui.input input {
+    .numberInput > .ui.input > input {
       border-color: red;
       color: red;
       font-weight: bold;

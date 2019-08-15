@@ -52,6 +52,8 @@ Numeric input control with step buttons for Semantic UI React
         stepCount: 1
         
 ## Styling example
+![Example image of numberInput](https://raw.githubusercontent.com/pksilen/semantic-ui-react-numberinput/master/example/styled_number_input.png)
+
    styles.css
    
     .numberInput .ui.button {

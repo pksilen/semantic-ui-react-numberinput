@@ -72,7 +72,7 @@ Numeric input control with step buttons for Semantic UI React
       width: 50px;
     }
     
-   Applying CSS
+   Applying CSS using class name
    
     <NumberInput className="numberInput" value={this.state.value} onChange={this.changeValue} />
     

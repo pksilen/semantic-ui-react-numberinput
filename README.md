@@ -2,6 +2,7 @@
 Numeric input control with step buttons for Semantic UI React
 
 ![Example image of numberInput](https://raw.githubusercontent.com/pksilen/semantic-ui-react-numberinput/master/example/number_input.png)
+
 ![Example image of numberInput](https://raw.githubusercontent.com/pksilen/semantic-ui-react-numberinput/master/example/right_buttons_number_input.png)
 
 ## Prerequisites
@@ -37,6 +38,7 @@ Numeric input control with step buttons for Semantic UI React
 ## NumberInput properties      
          value: string, // must be parseable to integer
          onChange: (newValue: string) => void,
+         buttonPlacement?: 'right' | 'leftAndRight'
          id?: string,
          className?: string,
          minValue?: number, // must be integer
@@ -46,6 +48,7 @@ Numeric input control with step buttons for Semantic UI React
          stepCount?: number, // must be positive integer
          
 ## Default values for props
+        buttonPlacement: 'leftAndRight',
         minValue: Number.MIN_SAFE_INTEGER,
         maxValue: Number.MAX_SAFE_INTEGER,
         maxLength: 10,

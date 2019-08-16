@@ -5,6 +5,7 @@
   "main": "lib/NumberInput.js",
   "scripts": {
     "build": "babel ./src --out-dir ./lib --source-maps --ignore \"src/**/*.test.js\",\"src/setupTests.js\"",
+    "build-demo": "webpack",
     "flow": "flow",
     "install-flow-types": "flow-typed install",
     "lint": "eslint ./src",
@@ -39,6 +40,7 @@
     "@babel/preset-react": "^7.0.0",
     "babel-eslint": "^10.0.2",
     "babel-jest": "^24.8.0",
+    "babel-loader": "^8.0.6",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
     "enzyme-to-json": "^3.4.0",

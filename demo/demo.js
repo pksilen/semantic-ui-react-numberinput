@@ -58,7 +58,10 @@ class DemoApp extends React.Component<{}, State> {
           onChange={this.changeSecondNumberInputValue}
         />
         <br />
-        <p>NumberPicker (buttonPlacement=&quot;right&quot;,&nbsp;minValue=0,&nbsp;maxValue=100,&nbsp;stepAmount=5)</p>
+        <p>
+          NumberPicker
+          (buttonPlacement=&quot;right&quot;,&nbsp;minValue=0,&nbsp;maxValue=100,&nbsp;stepAmount=5)
+        </p>
         <NumberInput
           buttonPlacement="right"
           minValue={0}
@@ -69,7 +72,8 @@ class DemoApp extends React.Component<{}, State> {
         />
         <br />
         <p>
-          NumberPicker (buttonPlacement=&quot;right&quot;,&nbsp;valueType=&quot;decimal&quot;&nbsp;stepAmount=0.25)
+          NumberPicker
+          (buttonPlacement=&quot;right&quot;,&nbsp;valueType=&quot;decimal&quot;&nbsp;stepAmount=0.25)
         </p>
         <NumberInput
           buttonPlacement="right"

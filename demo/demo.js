@@ -10,7 +10,7 @@ class DemoApp extends React.Component {
       firstNumberInputValue: '0',
       secondNumberInputValue: '0'
     };
-  };
+  }
 
   changeFirstNumberInputValue = newValue => {
     this.setState({ firstNumberInputvalue: newValue });
@@ -21,7 +21,7 @@ class DemoApp extends React.Component {
   };
 
   render() {
-    const { firstNumberInputValue } = this.state;
+    const { firstNumberInputValue, secondNumberInputValue } = this.state;
 
     return (
       <div>

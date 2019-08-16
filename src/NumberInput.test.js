@@ -71,7 +71,9 @@ test('pressing NumberInput´s increment button increments value (valueType is in
 });
 
 test('pressing NumberInput´s increment button increments value (valueType is decimal)', () => {
-  const numberInput = mount(<NumberInput value="0.12" valueType="decimal" precision={1} stepAmount={0.1} onChange={onChangeMock} />);
+  const numberInput = mount(
+    <NumberInput value="0.12" valueType="decimal" precision={1} stepAmount={0.1} onChange={onChangeMock} />
+  );
   const incrementButton = numberInput.find('button').last();
 
   incrementButton.simulate('click');
@@ -187,7 +189,9 @@ test('changing NumberInput´s input value (valueType is integer)', () => {
 });
 
 test('changing NumberInput´s input value (valueType is decimal)', () => {
-  const numberInput = mount(<NumberInput value="1" valueType="decimal" precision={2} onChange={onChangeMock} />);
+  const numberInput = mount(
+    <NumberInput value="1" valueType="decimal" precision={2} onChange={onChangeMock} />
+  );
   const input = numberInput.find('input');
 
   input.simulate('change', { target: { value: '3.245' } });

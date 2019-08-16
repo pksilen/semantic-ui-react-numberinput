@@ -7,23 +7,37 @@ class DemoApp extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: '0'
+      firstNumberInputValue: '0',
+      secondNumberInputValue: '0'
     };
-  }
+  };
 
-  changeValue = newValue => {
-    this.setState({ value: newValue });
+  changeFirstNumberInputValue = newValue => {
+    this.setState({ firstNumberInputvalue: newValue });
+  };
+
+  changeSecondNumberInputValue = newValue => {
+    this.setState({ secondNumberInputvalue: newValue });
   };
 
   render() {
-    const { value } = this.state;
+    const { firstNumberInputValue } = this.state;
 
     return (
       <div>
         <h1>NumberInput Demo</h1>
-        <p>Default NumberPicker </p>
-        <NumberInput value={value} onChange={this.changeValue} />
-        <p></p>
+        <p>Default NumberPicker (buttonPlacement="leftAndRight") </p>
+        <NumberInput value={firstNumberInputValue} onChange={this.changeFirstNumberInputValue} />
+        <br />
+        <p>NumberPicker (buttonPlacement="right") </p>
+        <NumberInput
+          buttonPlacement="right"
+          value={secondNumberInputValue}
+          onChange={this.changeSecondNumberInputValue}
+        />
+        <p>
+          <br />
+        </p>
         <a href="https://github.com/pksilen/semantic-ui-react-numberinput">
           semantic-ui-react-numberinput on GitHub
         </a>

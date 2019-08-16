@@ -73,7 +73,7 @@ class DemoApp extends React.Component<{}, State> {
         <br />
         <p>
           NumberPicker
-          (buttonPlacement=&quot;right&quot;,&nbsp;valueType=&quot;decimal&quot;&nbsp;stepAmount=0.25)
+          (buttonPlacement=&quot;right&quot;,&nbsp;valueType=&quot;decimal&quot,;&nbsp;stepAmount=0.25)
         </p>
         <NumberInput
           buttonPlacement="right"

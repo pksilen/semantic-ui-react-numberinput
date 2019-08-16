@@ -17,6 +17,7 @@ Numeric input control with step buttons for Semantic UI React
     npm install --save semantic-ui-react-numberinput
     
 ## Demo
+   NumberInput [Demo]
     
     
 ## Example usage
@@ -121,4 +122,5 @@ MIT License
 [license]: https://github.com/pksilen/semantic-ui-react-numberinput/blob/master/LICENSE
 [version-badge]: https://img.shields.io/npm/v/semantic-ui-react-numberinput.svg?style=flat-square
 [package]: https://www.npmjs.com/package/semantic-ui-react-numberinput
+[demo]: https://pksilen.github.io/semantic-ui-react-numberinput/
 

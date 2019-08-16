@@ -45,25 +45,27 @@ Numeric input control with step buttons for Semantic UI React
          
    Specify decimal NumberInput with increment/decrement step of 0.25 and default precision of 2 
                    
-          <NumberInput valueType="decimal" stepAmount={0.25} value={this.state.value} onChange={this.changeValue} />
+         <NumberInput valueType="decimal" stepAmount={0.25} value={this.state.value} onChange={this.changeValue} />
           
    Specify decimal NumberInput with increment/decrement step of 0.1 and precision of 1 
                      
-            <NumberInput valueType="decimal" stepAmount={0.1} precision={1} value={this.state.value} onChange={this.changeValue} />
+         <NumberInput valueType="decimal" stepAmount={0.1} precision={1} value={this.state.value} onChange={this.changeValue} />
 
-## NumberInput properties      
+## Mandatory NumberInput properties      
          value: string, // must be parseable to integer or decimal number depending on valueType
          onChange: (newValue: string) => void,
+         
+## Optional NumberInput properties
          buttonPlacement?: 'right' | 'leftAndRight'
          id?: string,
          className?: string,
-         minValue?: number, // must be integer or decimal number depending on valueType
-         maxValue?: number, // must be integer or decimal number depending on valueType
-         maxLength?: number, // must be positive integer
-         precision: number, // must be positive integer, applicable to valueType 'decimal' only
+         minValue?: number,     // must be integer or decimal number depending on valueType
+         maxValue?: number,     // must be integer or decimal number depending on valueType
+         maxLength?: number,    // must be positive integer
+         precision?: number,    // must be positive integer, applicable to valueType 'decimal' only
          size?: 'mini' | 'small' | 'large' | 'big' | 'huge' | 'massive',
-         stepAmount?: number, // must be positive integer or decimal number
-         valueType: 'integer' | 'decimal'
+         stepAmount?: number,   // must be positive integer or decimal number
+         valueType?: 'integer' | 'decimal'
          
 ## Default values for props
         buttonPlacement: 'leftAndRight',

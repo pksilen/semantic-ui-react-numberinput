@@ -44,55 +44,55 @@ Numeric input control with step buttons for Semantic UI React
     
    Render NumberInput with step buttons on left and right side of the input (this is default behavior, if buttonPlacement is not specified)
              
-         <NumberInput buttonPlacement="leftAndRight" value={this.state.value} onChange={this.changeValue} />
+    <NumberInput buttonPlacement="leftAndRight" value={this.state.value} onChange={this.changeValue} />
          
    Render NumberInput with step buttons on the right side of the input
                       
-         <NumberInput buttonPlacement="right" value={this.state.value} onChange={this.changeValue} />
+    <NumberInput buttonPlacement="right" value={this.state.value} onChange={this.changeValue} />
     
    Specify allowed number range to be between 0 and 100
          
-         <NumberInput minValue={0} maxValue={100} value={this.state.value} onChange={this.changeValue} />
+    <NumberInput minValue={0} maxValue={100} value={this.state.value} onChange={this.changeValue} />
          
    Specify buttons to increment/decrement by 5 
                   
-         <NumberInput stepAmount={5} value={this.state.value} onChange={this.changeValue} />
+    <NumberInput stepAmount={5} value={this.state.value} onChange={this.changeValue} />
          
    Specify decimal NumberInput with increment/decrement step of 0.25 and default precision of 2 
                    
-         <NumberInput valueType="decimal" stepAmount={0.25} value={this.state.value} onChange={this.changeValue} />
+    <NumberInput valueType="decimal" stepAmount={0.25} value={this.state.value} onChange={this.changeValue} />
           
    Specify decimal NumberInput with increment/decrement step of 0.1 and precision of 1 
                      
-         <NumberInput valueType="decimal" stepAmount={0.1} precision={1} value={this.state.value} onChange={this.changeValue} />
+    <NumberInput valueType="decimal" stepAmount={0.1} precision={1} value={this.state.value} onChange={this.changeValue} />
 
 ## Mandatory NumberInput properties      
-         value: string, // must be parseable to integer or decimal number depending on valueType
-         onChange: (newValue: string) => void,
+    value: string, // must be parseable to integer or decimal number depending on valueType
+    onChange: (newValue: string) => void,
          
 ## Optional NumberInput properties
-         buttonPlacement?: 'right' | 'leftAndRight'
-         id?: string,
-         className?: string,
-         minValue?: number,     // must be integer or decimal number depending on valueType
-         maxValue?: number,     // must be integer or decimal number depending on valueType
-         maxLength?: number,    // must be positive integer
-         precision?: number,    // must be positive integer, applicable to valueType 'decimal' only
-         size?: 'mini' | 'small' | 'large' | 'big' | 'huge' | 'massive',
-         stepAmount?: number,   // must be positive integer or decimal number
-         valueType?: 'integer' | 'decimal'
-         
+    buttonPlacement?: 'right' | 'leftAndRight'
+    id?: string,
+    className?: string,
+    minValue?: number,     // must be integer or decimal number depending on valueType
+    maxValue?: number,     // must be integer or decimal number depending on valueType
+    maxLength?: number,    // must be positive integer
+    precision?: number,    // must be positive integer, applicable to valueType 'decimal' only
+    size?: 'mini' | 'small' | 'large' | 'big' | 'huge' | 'massive',
+    stepAmount?: number,   // must be positive integer or decimal number
+    valueType?: 'integer' | 'decimal'
+        
 ## Default values for optional properties
-        buttonPlacement: 'leftAndRight',
-        id: null,
-        className: null,
-        minValue: -999999999,
-        maxValue: 9999999999,
-        maxLength: 10,
-        precision: 2,
-        size: 'small',
-        stepAmount: 1,
-        valueType: 'integer'
+    buttonPlacement: 'leftAndRight',
+    id: null,
+    className: null,
+    minValue: -999999999,
+    maxValue: 9999999999,
+    maxLength: 10,
+    precision: 2,
+    size: 'small',
+    stepAmount: 1,
+    valueType: 'integer'
         
 ## Styling example
 ![Example image of numberInput](https://raw.githubusercontent.com/pksilen/semantic-ui-react-numberinput/master/example/styled_number_input.png)

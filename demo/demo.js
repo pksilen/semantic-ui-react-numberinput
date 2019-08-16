@@ -10,11 +10,11 @@ class DemoApp extends React.Component {
   };
 
   changeFirstNumberInputValue = (newValue) => {
-    this.setState((prevState) => ({ ...prevState, firstNumberInputvalue: newValue }));
+    this.setState((prevState) => ({ ...prevState, firstNumberInputValue: newValue }));
   };
 
   changeSecondNumberInputValue = (newValue) => {
-    this.setState((prevState) => ({ ...prevState, secondNumberInputvalue: newValue }));
+    this.setState((prevState) => ({ ...prevState, secondNumberInputValue: newValue }));
   };
 
   render() {

@@ -6,7 +6,7 @@
   "scripts": {
     "build": "babel ./src --out-dir ./lib --source-maps --ignore \"src/**/*.test.js\",\"src/setupTests.js\"",
     "build-demo": "prettier --check demo/demo.js && flow demo/demo.js && eslint demo/demo.js && webpack",
-    "flow": "flow",
+    "flow": "flow ./src",
     "install-flow-types": "flow-typed install",
     "lint": "eslint ./src",
     "prebuild": "npm run prettier && npm run flow && npm run lint && npm run test",

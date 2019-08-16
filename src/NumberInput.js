@@ -252,11 +252,11 @@ export default class NumberInput extends React.Component<Props, {}> {
     if (buttonType === 'increment') {
       return (
         valueIsNotANumber ||
-        nextIncrementedValue >= maxValue ||
+        nextIncrementedValue > maxValue ||
         nextIncrementedValue.toString().length > maxLength
       );
     }
-    return valueIsNotANumber || valueAsInteger - stepAmount <= minValue;
+    return valueIsNotANumber || valueAsInteger - stepAmount < minValue;
   };
 
   render(): Element<*> {

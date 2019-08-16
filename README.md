@@ -35,6 +35,14 @@ Numeric input control with step buttons for Semantic UI React
         )};
     }
     
+   Render NumberInput with step buttons on left and right side of the input (this is default behavior, if buttonPlacement is not specified)
+             
+         <NumberInput buttonPlacement="leftAndRight" value={this.state.value} onChange={this.changeValue} />
+         
+   Render NumberInput with step buttons on the right side of the input
+                      
+         <NumberInput buttonPlacement="right" value={this.state.value} onChange={this.changeValue} />
+    
    Specify allowed number range to be between 0 and 100
          
          <NumberInput minValue={0} maxValue={100} value={this.state.value} onChange={this.changeValue} />

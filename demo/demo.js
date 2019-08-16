@@ -4,20 +4,17 @@ import { render } from 'react-dom';
 import NumberInput from '../src/NumberInput';
 
 class DemoApp extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      firstNumberInputValue: '0',
-      secondNumberInputValue: '0'
-    };
-  }
-
-  changeFirstNumberInputValue = newValue => {
-    this.setState({ firstNumberInputvalue: newValue });
+  state = {
+    firstNumberInputValue: '0',
+    secondNumberInputValue: '0'
   };
 
-  changeSecondNumberInputValue = newValue => {
-    this.setState({ secondNumberInputvalue: newValue });
+  changeFirstNumberInputValue = (newValue) => {
+    this.setState((prevState) => ({ ...prevState, firstNumberInputvalue: newValue }));
+  };
+
+  changeSecondNumberInputValue = (newValue) => {
+    this.setState((prevState) => ({ ...prevState, secondNumberInputvalue: newValue }));
   };
 
   render() {
@@ -26,10 +23,10 @@ class DemoApp extends React.Component {
     return (
       <div>
         <h1>NumberInput Demo</h1>
-        <p>Default NumberPicker (buttonPlacement="leftAndRight") </p>
+        <p>Default NumberPicker (buttonPlacement=&quot;leftAndRight&quot;)</p>
         <NumberInput value={firstNumberInputValue} onChange={this.changeFirstNumberInputValue} />
         <br />
-        <p>NumberPicker (buttonPlacement="right") </p>
+        <p>NumberPicker (buttonPlacement=&quot;right&quot;) </p>
         <NumberInput
           buttonPlacement="right"
           value={secondNumberInputValue}

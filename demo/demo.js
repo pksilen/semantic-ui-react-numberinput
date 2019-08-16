@@ -1,27 +1,52 @@
-import React from 'react';
-import { render } from 'react-dom';
+// @flow
 
+import React from 'react';
+import type { Element } from 'react';
+import { render } from 'react-dom';
+// $FlowFixMe
 import NumberInput from '../src/NumberInput';
 
-class DemoApp extends React.Component {
+type State = {
+  firstNumberInputValue: string,
+  secondNumberInputValue: string,
+  thirdNumberInputValue: string,
+  fourthNumberInputValue: string
+};
+
+class DemoApp extends React.Component<{}, State> {
   state = {
     firstNumberInputValue: '0',
-    secondNumberInputValue: '0'
+    secondNumberInputValue: '0',
+    thirdNumberInputValue: '0',
+    fourthNumberInputValue: '0'
   };
 
-  changeFirstNumberInputValue = (newValue) => {
-    this.setState((prevState) => ({ ...prevState, firstNumberInputValue: newValue }));
+  changeFirstNumberInputValue = (newValue: string) => {
+    this.setState((prevState: State) => ({ ...prevState, firstNumberInputValue: newValue }));
   };
 
-  changeSecondNumberInputValue = (newValue) => {
-    this.setState((prevState) => ({ ...prevState, secondNumberInputValue: newValue }));
+  changeSecondNumberInputValue = (newValue: string) => {
+    this.setState((prevState: State) => ({ ...prevState, secondNumberInputValue: newValue }));
   };
 
-  render() {
-    const { firstNumberInputValue, secondNumberInputValue } = this.state;
+  changeThirdNumberInputValue = (newValue: string) => {
+    this.setState((prevState: State) => ({ ...prevState, thirdNumberInputValue: newValue }));
+  };
+
+  changeFourthNumberInputValue = (newValue: string) => {
+    this.setState((prevState: State) => ({ ...prevState, fourthNumberInputValue: newValue }));
+  };
+
+  render(): Element<*> {
+    const {
+      firstNumberInputValue,
+      secondNumberInputValue,
+      thirdNumberInputValue,
+      fourthNumberInputValue
+    } = this.state;
 
     return (
-      <div>
+      <div style={{ marginLeft: '5px' }}>
         <h1>NumberInput Demo</h1>
         <p>Default NumberPicker (buttonPlacement=&quot;leftAndRight&quot;)</p>
         <NumberInput value={firstNumberInputValue} onChange={this.changeFirstNumberInputValue} />
@@ -32,11 +57,32 @@ class DemoApp extends React.Component {
           value={secondNumberInputValue}
           onChange={this.changeSecondNumberInputValue}
         />
+        <br />
+        <p>NumberPicker (buttonPlacement=&quot;right&quot;, minValue=0, maxValue=100, stepAmount=5)</p>
+        <NumberInput
+          buttonPlacement="right"
+          minValue={0}
+          maxValue={100}
+          stepAmount={5}
+          value={thirdNumberInputValue}
+          onChange={this.changeThirdNumberInputValue}
+        />
+        <br />
+        <p>
+          NumberPicker (buttonPlacement=&quot;right&quot;, valueType=&quot;decimal&quot;, stepAmount=0.25)
+        </p>
+        <NumberInput
+          buttonPlacement="right"
+          valueType="decimal"
+          stepAmount={0.25}
+          value={fourthNumberInputValue}
+          onChange={this.changeFourthNumberInputValue}
+        />
         <p>
           <br />
         </p>
         <a href="https://github.com/pksilen/semantic-ui-react-numberinput">
-          semantic-ui-react-numberinput on GitHub
+          View semantic-ui-react-numberinput on GitHub
         </a>
       </div>
     );
@@ -44,4 +90,7 @@ class DemoApp extends React.Component {
 }
 
 const rootElement = document.getElementById('app-root');
-render(<DemoApp />, rootElement);
+
+if (rootElement) {
+  render(<DemoApp />, rootElement);
+}

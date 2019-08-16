@@ -17,7 +17,7 @@ Numeric input control with step buttons for [Semantic UI React]
     npm install --save semantic-ui-react-numberinput
     
 ## Demo
-   NumberInput [Demo]
+   NumberInput [demo]
     
     
 ## Example usage

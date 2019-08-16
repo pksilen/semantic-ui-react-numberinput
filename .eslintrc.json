@@ -7,6 +7,7 @@
   },
   "plugins": ["flowtype", "jest"],
   "rules": {
+    "max-len": ["error", { "code": 110 }],
     "comma-dangle": "off",
     "operator-linebreak": "off",
     "implicit-arrow-linebreak": "off",

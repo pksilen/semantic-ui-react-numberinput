@@ -5,7 +5,7 @@
   "main": "lib/NumberInput.js",
   "scripts": {
     "build": "babel ./src --out-dir ./lib --source-maps --ignore \"src/**/*.test.js\",\"src/setupTests.js\"",
-    "build-demo": "prettier --check demo/demo.js && eslint demo/demo.js && webpack",
+    "build-demo": "prettier --check demo/demo.js && flow demo/demo.js && eslint demo/demo.js && webpack",
     "flow": "flow",
     "install-flow-types": "flow-typed install",
     "lint": "eslint ./src",

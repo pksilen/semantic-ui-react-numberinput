@@ -67,7 +67,7 @@ Numeric input control with step buttons for Semantic UI React
          stepAmount?: number,   // must be positive integer or decimal number
          valueType?: 'integer' | 'decimal'
          
-## Default values for props
+## Default values for optional properties
         buttonPlacement: 'leftAndRight',
         minValue: -999999999,
         maxValue: 9999999999,

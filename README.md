@@ -10,7 +10,7 @@ Numeric input control with step buttons for Semantic UI React
     "react-dom": "^16.0.0",
     "semantic-ui-react": "^0.87.0"
 
-## Install
+## Installation
     npm install --save semantic-ui-react-numberinput
     
 ## Example usage
@@ -34,6 +34,14 @@ Numeric input control with step buttons for Semantic UI React
             <NumberInput value={this.state.value} onChange={this.changeValue} />
         )};
     }
+    
+   Specify allowed number range to be between 0 and 100
+         
+         <NumberInput minValue={0} maxValue={100} value={this.state.value} onChange={this.changeValue} />
+         
+   Specify buttons to increment/decrement by 5 
+                  
+         <NumberInput minValue={0} maxValue={100} stepCount={5} value={this.state.value} onChange={this.changeValue} />
 
 ## NumberInput properties      
          value: string, // must be parseable to integer

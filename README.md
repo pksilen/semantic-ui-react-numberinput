@@ -41,27 +41,39 @@ Numeric input control with step buttons for Semantic UI React
          
    Specify buttons to increment/decrement by 5 
                   
-         <NumberInput minValue={0} maxValue={100} stepCount={5} value={this.state.value} onChange={this.changeValue} />
+         <NumberInput stepAmount={5} value={this.state.value} onChange={this.changeValue} />
+         
+   Specify decimal NumberInput with increment/decrement step of 0.25 and default precision of 2 
+                   
+          <NumberInput valueType="decimal" stepAmount={0.25} value={this.state.value} onChange={this.changeValue} />
+          
+   Specify decimal NumberInput with increment/decrement step of 0.1 and precision of 1 
+                     
+            <NumberInput valueType="decimal" stepAmount={0.1} precision={1} value={this.state.value} onChange={this.changeValue} />
 
 ## NumberInput properties      
-         value: string, // must be parseable to integer
+         value: string, // must be parseable to integer or decimal number depending on valueType
          onChange: (newValue: string) => void,
          buttonPlacement?: 'right' | 'leftAndRight'
          id?: string,
          className?: string,
-         minValue?: number, // must be integer
-         maxValue?: number, // must be integer
+         minValue?: number, // must be integer or decimal number depending on valueType
+         maxValue?: number, // must be integer or decimal number depending on valueType
          maxLength?: number, // must be positive integer
+         precision: number, // must be positive integer, applicable to valueType 'decimal' only
          size?: 'mini' | 'small' | 'large' | 'big' | 'huge' | 'massive',
-         stepCount?: number, // must be positive integer
+         stepAmount?: number, // must be positive integer or decimal number
+         valueType: 'integer' | 'decimal'
          
 ## Default values for props
         buttonPlacement: 'leftAndRight',
-        minValue: Number.MIN_SAFE_INTEGER,
-        maxValue: Number.MAX_SAFE_INTEGER,
+        minValue: -999999999,
+        maxValue: 9999999999,
         maxLength: 10,
+        precision: 2,
         size: 'small',
-        stepCount: 1
+        stepAmount: 1,
+        valueType: 'integer'
         
 ## Styling example
 ![Example image of numberInput](https://raw.githubusercontent.com/pksilen/semantic-ui-react-numberinput/master/example/styled_number_input.png)

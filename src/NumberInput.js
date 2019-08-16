@@ -6,6 +6,8 @@ import PropTypes from 'prop-types';
 import { Button } from 'semantic-ui-react';
 
 type ButtonPlacement = 'right' | 'leftAndRight';
+type ValueType = 'integer' | 'decimal';
+type ButtonType = 'increment' | 'decrement';
 
 type Props = {
   value: string,
@@ -16,11 +18,11 @@ type Props = {
   minValue: number,
   maxValue: number,
   maxLength: number,
+  precision: number,
   size: 'mini' | 'small' | 'large' | 'big' | 'huge' | 'massive',
-  stepCount: number
+  stepAmount: number,
+  valueType: ValueType
 };
-
-type ButtonType = 'increment' | 'decrement';
 
 const style = {
   outerDivStyle: {
@@ -51,96 +53,148 @@ const style = {
 
 // noinspection JSUnusedGlobalSymbols
 export default class NumberInput extends React.Component<Props, {}> {
+  static validateValue = (props: Props): ?Error => {
+    if (!props.value) {
+      return new Error('value is required');
+    }
+    if (props.valueType === 'integer' && !Number.isSafeInteger(parseInt(props.value, 10))) {
+      return new Error('value must be a string that can be parsed to an integer');
+    }
+    if (props.valueType === 'decimal' && !Number.isFinite(parseFloat(props.value))) {
+      return new Error('value must be a string that can be parsed to a decimal number');
+    }
+    return null;
+  };
+
+  static validateIntegerOrDecimalValue = (
+    valueType: ValueType,
+    value: number,
+    valueName: string,
+    maxLength: number
+  ): ?Error => {
+    if (valueType === 'integer' && !Number.isSafeInteger(value)) {
+      return new Error(`${valueName} must be an integer`);
+    }
+    if (valueType === 'decimal' && !Number.isFinite(value)) {
+      return new Error(`${valueName} must be a decimal number`);
+    }
+    if (value.toString().length > maxLength) {
+      return new Error(`${valueName} does not fit in maxLength`);
+    }
+    return null;
+  };
+
+  static validateMinValue = (props: Props): ?Error => {
+    if (props.minValue > props.maxValue) {
+      return new Error('maxValue must greater than or equal to minValue');
+    }
+    return NumberInput.validateIntegerOrDecimalValue(
+      props.valueType,
+      props.minValue,
+      'minValue',
+      props.maxLength
+    );
+  };
+
+  static validateMaxValue = (props: Props): ?Error =>
+    NumberInput.validateIntegerOrDecimalValue(props.valueType, props.maxValue, 'maxValue', props.maxLength);
+
+  static validateMaxLength = (props: Props): ?Error => {
+    if (!Number.isSafeInteger(props.maxLength) || props.maxLength < 1) {
+      return new Error('maxLength must be a positive integer');
+    }
+    return null;
+  };
+
+  static validatePrecision = (props: Props): ?Error => {
+    if (!Number.isSafeInteger(props.precision) || props.precision < 1) {
+      return new Error('precision must be a positive integer');
+    }
+    return null;
+  };
+
+  static validateStepCount = (props: Props): ?Error => {
+    if (props.valueType === 'integer' && (!Number.isSafeInteger(props.stepAmount) || props.stepAmount <= 0)) {
+      return new Error('stepAmount must be a positive integer');
+    }
+    if (props.valueType === 'decimal' && (!Number.isFinite(props.stepAmount) || props.stepAmount <= 0)) {
+      return new Error('stepAmount must be a postive decimal value');
+    }
+    return null;
+  };
+
   static propTypes = {
     // eslint-disable-next-line react/require-default-props
-    value(props: Props): ?Error {
-      if (!props.value) {
-        return new Error('value is required');
-      }
-      if (!Number.isSafeInteger(parseInt(props.value, 10))) {
-        return new Error('value must be a string that can be parsed to an integer');
-      }
-      return null;
-    },
+    value: NumberInput.validateValue,
     onChange: PropTypes.func.isRequired,
     buttonPlacement: PropTypes.oneOf(['right', 'leftAndRight']),
     className: PropTypes.string,
     id: PropTypes.string,
-    minValue(props: Props): ?Error {
-      if (!Number.isSafeInteger(props.minValue)) {
-        return new Error('minValue must be an integer');
-      }
-      if (props.minValue >= props.maxValue) {
-        return new Error('maxValue must greater than minValue');
-      }
-      return null;
-    },
-    maxValue(props: Props): ?Error {
-      if (!Number.isSafeInteger(props.maxValue)) {
-        return new Error('maxValue must be an integer');
-      }
-      if (props.minValue >= props.maxValue) {
-        return new Error('maxValue must greater than minValue');
-      }
-      return null;
-    },
-    maxLength(props: Props): ?Error {
-      if (!Number.isSafeInteger(props.maxLength) || props.maxLength < 1) {
-        return new Error('maxLength must be a positive integer');
-      }
-      return null;
-    },
+    minValue: NumberInput.validateMinValue,
+    maxValue: NumberInput.validateMaxValue,
+    maxLength: NumberInput.validateMaxLength,
+    precision: NumberInput.validatePrecision,
     size: PropTypes.oneOf(['mini', 'small', 'large', 'big', 'huge', 'massive']),
-    stepCount(props: Props): ?Error {
-      if (!Number.isSafeInteger(props.stepCount) || props.stepCount < 1) {
-        return new Error('stepCount must be a positive integer');
-      }
-      return null;
-    }
+    stepAmount: NumberInput.validateStepCount,
+    valueType: PropTypes.oneOf(['integer', 'decimal'])
   };
 
+  // noinspection MagicNumberJS
   static defaultProps = {
     buttonPlacement: 'leftAndRight',
     className: null,
     id: null,
-    minValue: Number.MIN_SAFE_INTEGER,
-    maxValue: Number.MAX_SAFE_INTEGER,
+    minValue: -999999999,
+    maxValue: 9999999999,
     maxLength: 10,
+    precision: 2,
     size: 'small',
-    stepCount: 1
+    stepAmount: 1,
+    valueType: 'integer'
   };
 
   decrementValue = () => {
-    const { minValue, onChange, stepCount, value } = this.props;
-    const valueAsInteger = parseInt(value, 10);
+    const { minValue, onChange, stepAmount, value, valueType } = this.props;
+    const currentValue = valueType === 'integer' ? parseInt(value, 10) : parseFloat(value);
 
-    if (Number.isSafeInteger(valueAsInteger)) {
-      const newValueAsInteger = valueAsInteger - stepCount;
-      if (newValueAsInteger >= minValue) {
-        onChange(newValueAsInteger.toString());
+    if (this.isValidValue(currentValue, valueType)) {
+      const newValue = currentValue - stepAmount;
+      if (newValue >= minValue) {
+        onChange(this.getValueWithPrecision(newValue).toString());
       }
     }
+  };
+
+  isValidValue = (value: number, valueType: ValueType) =>
+    (valueType === 'integer' && Number.isSafeInteger(value)) ||
+    (valueType === 'decimal' && Number.isFinite(value));
+
+  getValueWithPrecision = (value: number): number => {
+    const { precision, valueType } = this.props;
+
+    const factor = 10 ** precision;
+    return valueType === 'integer' ? value : Math.round(value * factor) / factor;
   };
 
   incrementValue = () => {
-    const { maxValue, onChange, stepCount, value } = this.props;
-    const valueAsInteger = parseInt(value, 10);
+    const { maxValue, onChange, stepAmount, value, valueType } = this.props;
+    const currentValue = valueType === 'integer' ? parseInt(value, 10) : parseFloat(value);
 
-    if (Number.isSafeInteger(valueAsInteger)) {
-      const newValueAsInteger = valueAsInteger + stepCount;
-      if (newValueAsInteger <= maxValue) {
-        onChange(newValueAsInteger.toString());
+    if (this.isValidValue(currentValue, valueType)) {
+      const newValue = currentValue + stepAmount;
+      if (newValue <= maxValue) {
+        onChange(this.getValueWithPrecision(newValue).toString());
       }
     }
   };
 
-  changeValue = ({ target: { value: newValue } }: SyntheticInputEvent<HTMLInputElement>) => {
-    const { maxValue, minValue, onChange } = this.props;
-    const newValueAsInteger = parseInt(newValue, 10);
+  changeValue = ({ target: { value } }: SyntheticInputEvent<HTMLInputElement>) => {
+    const { maxValue, minValue, onChange, valueType } = this.props;
+    const newValue = valueType === 'integer' ? parseInt(value, 10) : parseFloat(value);
 
-    if (Number.isSafeInteger(newValueAsInteger)) {
-      if (newValueAsInteger >= minValue && newValueAsInteger <= maxValue) {
-        onChange(newValueAsInteger.toString());
+    if (this.isValidValue(newValue, valueType)) {
+      if (newValue >= minValue && newValue <= maxValue) {
+        onChange(this.getValueWithPrecision(newValue).toString());
       }
     }
   };
@@ -190,10 +244,10 @@ export default class NumberInput extends React.Component<Props, {}> {
   };
 
   isDisabledButton = (buttonType: ButtonType): boolean => {
-    const { maxLength, maxValue, minValue, stepCount, value } = this.props;
+    const { maxLength, maxValue, minValue, stepAmount, value } = this.props;
     const valueAsInteger = parseInt(value, 10);
     const valueIsNotANumber = Number.isNaN(valueAsInteger);
-    const nextIncrementedValue = valueAsInteger + stepCount;
+    const nextIncrementedValue = valueAsInteger + stepAmount;
 
     if (buttonType === 'increment') {
       return (
@@ -202,7 +256,7 @@ export default class NumberInput extends React.Component<Props, {}> {
         nextIncrementedValue.toString().length > maxLength
       );
     }
-    return valueIsNotANumber || valueAsInteger - stepCount <= minValue;
+    return valueIsNotANumber || valueAsInteger - stepAmount <= minValue;
   };
 
   render(): Element<*> {

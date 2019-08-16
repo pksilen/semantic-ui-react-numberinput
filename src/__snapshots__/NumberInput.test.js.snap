@@ -1,5 +1,125 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`NumberInput should render correctly 1`] = `ShallowWrapper {}`;
+exports[`NumberInput should render correctly 1`] = `
+<div
+  className={null}
+  id={null}
+>
+  <Button
+    as="button"
+    disabled={false}
+    icon="minus"
+    onClick={[Function]}
+    size="small"
+    style={
+      Object {
+        "borderRadius": 0,
+        "lineHeight": "calc(1em + 2px)",
+        "margin": 0,
+      }
+    }
+  />
+  <div
+    className="ui input small"
+  >
+    <input
+      maxLength={10}
+      onChange={[Function]}
+      style={
+        Object {
+          "borderRadius": 0,
+          "textAlign": "right",
+        }
+      }
+      type="text"
+      value="1"
+    />
+  </div>
+  <Button
+    as="button"
+    disabled={false}
+    icon="plus"
+    onClick={[Function]}
+    size="small"
+    style={
+      Object {
+        "borderRadius": 0,
+        "lineHeight": "calc(1em + 2px)",
+        "margin": 0,
+      }
+    }
+  />
+</div>
+`;
 
-exports[`NumberInput should render correctly when buttonPlacement is right 1`] = `ShallowWrapper {}`;
+exports[`NumberInput should render correctly when buttonPlacement is right 1`] = `
+<div
+  className={null}
+  id={null}
+  style={
+    Object {
+      "display": "flex",
+    }
+  }
+>
+  <div
+    className="ui input small"
+  >
+    <input
+      maxLength={10}
+      onChange={[Function]}
+      style={
+        Object {
+          "borderRadius": 0,
+          "textAlign": "right",
+        }
+      }
+      type="text"
+      value="1"
+    />
+  </div>
+  <div
+    style={
+      Object {
+        "display": "flex",
+        "flexDirection": "column",
+      }
+    }
+  >
+    <Button
+      as="button"
+      disabled={false}
+      icon="caret up"
+      onClick={[Function]}
+      size="small"
+      style={
+        Object {
+          "borderRadius": 0,
+          "flex": "0 0 50%",
+          "margin": 0,
+          "maxHeight": "unset",
+          "minHeight": "unset",
+          "padding": "0 0.2em",
+        }
+      }
+    />
+    <Button
+      as="button"
+      disabled={false}
+      icon="caret down"
+      onClick={[Function]}
+      size="small"
+      style={
+        Object {
+          "borderRadius": 0,
+          "flex": "0 0 50%",
+          "margin": 0,
+          "maxHeight": "unset",
+          "minHeight": "unset",
+          "padding": "0 0.2em",
+        }
+      }
+    />
+  </div>
+</div>
+`;

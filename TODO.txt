@@ -1,4 +1,1 @@
-0. maxValue.toString() should not be greater than maxLength
-1. Correct snapshot rendering
-2. Example page
-3. Floating point valueType
+Example page

@@ -69,6 +69,8 @@ Numeric input control with step buttons for Semantic UI React
          
 ## Default values for optional properties
         buttonPlacement: 'leftAndRight',
+        id: null,
+        className: null,
         minValue: -999999999,
         maxValue: 9999999999,
         maxLength: 10,

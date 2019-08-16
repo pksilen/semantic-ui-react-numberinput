@@ -1,6 +1,6 @@
 {
   "name": "semantic-ui-react-numberinput",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Numeric input control with step buttons for Semantic UI React",
   "main": "lib/NumberInput.js",
   "scripts": {
@@ -54,16 +54,22 @@
     "flow-typed": "^2.6.1",
     "jest": "^24.8.0",
     "prettier": "^1.18.2",
-    "prop-types": "^15.7.2",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
-    "semantic-ui-react": "^0.87.3"
+    "semantic-ui-react": "^0.87.3",
+    "webpack": "^4.39.2",
+    "webpack-cli": "^3.3.6"
+  },
+  "dependencies": {
+    "prop-types": "^15.7.2"
   },
   "jest": {
     "setupFilesAfterEnv": [
       "<rootDir>/src/setupTests.js"
     ],
-    "snapshotSerializers": ["enzyme-to-json/serializer"]
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ]
   },
   "browserslist": [
     "last 2 version",

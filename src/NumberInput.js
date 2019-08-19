@@ -147,7 +147,7 @@ export default class NumberInput extends React.Component<Props, {}> {
 
     if (buttonPlacement === 'leftAndRight') {
       return (
-        <div id={id} className={className}>
+        <div id={id} className={className} style={style.leftAndRight.outerDiv}>
           {this.getButtonComponent('decrement')}
           {this.getInputComponent()}
           {this.getButtonComponent('increment')}

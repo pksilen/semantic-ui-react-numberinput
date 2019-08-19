@@ -39,13 +39,17 @@ const style = {
     }
   },
   leftAndRight: {
+    outerDiv: {
+      display: 'flex'
+    },
     input: {
       borderRadius: 0
     },
     button: {
       base: {
-        lineHeight: 'calc(1em + 2px)',
-        margin: 0
+        minHeight: 'unset',
+        margin: 0,
+        maxHeight: 'unset'
       },
       increment: {
         borderBottomLeftRadius: 0,

@@ -33,23 +33,21 @@ class DemoApp extends React.Component<{}, State> {
     return (
       <div style={{ marginLeft: '5px' }}>
         <h1>NumberInput Demo</h1>
-        <p>Default NumberPicker (buttonPlacement=&quot;leftAndRight&quot;)</p>
+        Default NumberPicker (buttonPlacement=&quot;leftAndRight&quot;)
         <NumberInput
           value={numberInputValues[0]}
           onChange={(newValue: string) => this.changeNumberInputValue(newValue, 0)}
         />
         <br />
-        <p>NumberPicker (buttonPlacement=&quot;right&quot;) </p>
+        NumberPicker (buttonPlacement=&quot;right&quot;)
         <NumberInput
           buttonPlacement="right"
-          value={numberInputValues[0]}
+          value={numberInputValues[1]}
           onChange={(newValue: string) => this.changeNumberInputValue(newValue, 1)}
         />
         <br />
-        <p>
-          NumberPicker
-          (buttonPlacement=&quot;right&quot;,&nbsp;minValue=-100,&nbsp;maxValue=100,&nbsp;stepAmount=5)
-        </p>
+        NumberPicker
+        (buttonPlacement=&quot;right&quot;,&nbsp;minValue=-100,&nbsp;maxValue=100,&nbsp;stepAmount=5)
         <NumberInput
           buttonPlacement="right"
           minValue={-100}
@@ -59,10 +57,8 @@ class DemoApp extends React.Component<{}, State> {
           onChange={(newValue: string) => this.changeNumberInputValue(newValue, 2)}
         />
         <br />
-        <p>
-          NumberPicker
-          (buttonPlacement=&quot;right&quot;,&nbsp;valueType=&quot;decimal&quot;,&nbsp;stepAmount=0.25)
-        </p>
+        NumberPicker
+        (buttonPlacement=&quot;right&quot;,&nbsp;valueType=&quot;decimal&quot;,&nbsp;stepAmount=0.25)
         <NumberInput
           buttonPlacement="right"
           valueType="decimal"
@@ -81,11 +77,9 @@ class DemoApp extends React.Component<{}, State> {
           value={numberInputValues[4]}
           onChange={(newValue: string) => this.changeNumberInputValue(newValue, 4)}
         />
-        <p>
-          NumberPicker
-          (buttonPlacement=&quot;right&quot;,&nbsp;allowEmptyValue=true,&nbsp;defaultValue=10,&nbsp;
-          placeholder=&quot;Enter a number&quot;)
-        </p>
+        NumberPicker
+        (buttonPlacement=&quot;right&quot;,&nbsp;allowEmptyValue=true,&nbsp;defaultValue=10,&nbsp;
+        placeholder=&quot;Enter a number&quot;)
         <NumberInput
           buttonPlacement="right"
           allowEmptyValue
@@ -95,37 +89,42 @@ class DemoApp extends React.Component<{}, State> {
           onChange={(newValue: string) => this.changeNumberInputValue(newValue, 5)}
         />
         <h2>NumberInput sizes</h2>
-        <p>Mini</p>
+        Mini
         <NumberInput
           size="mini"
           value={numberInputValues[6]}
           onChange={(newValue: string) => this.changeNumberInputValue(newValue, 6)}
         />
-        <p>Small</p>
+        <br />
+        Small
         <NumberInput
           size="small"
           value={numberInputValues[7]}
           onChange={(newValue: string) => this.changeNumberInputValue(newValue, 7)}
         />
-        <p>Large</p>
+        <br />
+        Large
         <NumberInput
           size="large"
           value={numberInputValues[8]}
           onChange={(newValue: string) => this.changeNumberInputValue(newValue, 8)}
         />
-        <p>Big</p>
+        <br />
+        Big
         <NumberInput
           size="big"
           value={numberInputValues[9]}
           onChange={(newValue: string) => this.changeNumberInputValue(newValue, 9)}
         />
-        <p>Huge</p>
+        <br />
+        Huge
         <NumberInput
           size="huge"
           value={numberInputValues[10]}
           onChange={(newValue: string) => this.changeNumberInputValue(newValue, 10)}
         />
-        <p>Massive</p>
+        <br />
+        Massive
         <NumberInput
           size="massive"
           value={numberInputValues[11]}

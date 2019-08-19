@@ -7,68 +7,56 @@ import { render } from 'react-dom';
 import NumberInput from '../src/NumberInput';
 
 type State = {
-  firstNumberInputValue: string,
-  secondNumberInputValue: string,
-  thirdNumberInputValue: string,
-  fourthNumberInputValue: string
+  numberInputValues: string[]
 };
 
 class DemoApp extends React.Component<{}, State> {
   state = {
-    firstNumberInputValue: '0',
-    secondNumberInputValue: '0',
-    thirdNumberInputValue: '0',
-    fourthNumberInputValue: '0'
+    numberInputValues: ['0', '0', '0', '0', '', '10', '0', '0', '0', '0', '0', '0']
   };
 
-  changeFirstNumberInputValue = (newValue: string) => {
-    this.setState((prevState: State) => ({ ...prevState, firstNumberInputValue: newValue }));
-  };
+  changeNumberInputValue = (newValue: string, numberInputComponentIndex: number) => {
+    this.setState((prevState: State): State => {
+      const { numberInputValues } = prevState;
+      numberInputValues[numberInputComponentIndex] = newValue;
 
-  changeSecondNumberInputValue = (newValue: string) => {
-    this.setState((prevState: State) => ({ ...prevState, secondNumberInputValue: newValue }));
-  };
-
-  changeThirdNumberInputValue = (newValue: string) => {
-    this.setState((prevState: State) => ({ ...prevState, thirdNumberInputValue: newValue }));
-  };
-
-  changeFourthNumberInputValue = (newValue: string) => {
-    this.setState((prevState: State) => ({ ...prevState, fourthNumberInputValue: newValue }));
+      return {
+        numberInputValues
+      };
+    });
   };
 
   render(): Element<*> {
-    const {
-      firstNumberInputValue,
-      secondNumberInputValue,
-      thirdNumberInputValue,
-      fourthNumberInputValue
-    } = this.state;
+    const { numberInputValues } = this.state;
 
+    // noinspection MagicNumberJS
     return (
       <div style={{ marginLeft: '5px' }}>
         <h1>NumberInput Demo</h1>
         <p>Default NumberPicker (buttonPlacement=&quot;leftAndRight&quot;)</p>
-        <NumberInput value={firstNumberInputValue} onChange={this.changeFirstNumberInputValue} />
+        <NumberInput
+          value={numberInputValues[0]}
+          onChange={(newValue: string) => this.changeNumberInputValue(newValue, 0)}
+        />
         <br />
         <p>NumberPicker (buttonPlacement=&quot;right&quot;) </p>
         <NumberInput
           buttonPlacement="right"
-          value={secondNumberInputValue}
-          onChange={this.changeSecondNumberInputValue}
+          value={numberInputValues[0]}
+          onChange={(newValue: string) => this.changeNumberInputValue(newValue, 1)}
         />
         <br />
         <p>
           NumberPicker
-          (buttonPlacement=&quot;right&quot;,&nbsp;minValue=0,&nbsp;maxValue=100,&nbsp;stepAmount=5)
+          (buttonPlacement=&quot;right&quot;,&nbsp;minValue=-100,&nbsp;maxValue=100,&nbsp;stepAmount=5)
         </p>
         <NumberInput
           buttonPlacement="right"
-          minValue={0}
+          minValue={-100}
           maxValue={100}
           stepAmount={5}
-          value={thirdNumberInputValue}
-          onChange={this.changeThirdNumberInputValue}
+          value={numberInputValues[2]}
+          onChange={(newValue: string) => this.changeNumberInputValue(newValue, 2)}
         />
         <br />
         <p>
@@ -79,8 +67,69 @@ class DemoApp extends React.Component<{}, State> {
           buttonPlacement="right"
           valueType="decimal"
           stepAmount={0.25}
-          value={fourthNumberInputValue}
-          onChange={this.changeFourthNumberInputValue}
+          value={numberInputValues[3]}
+          onChange={(newValue: string) => this.changeNumberInputValue(newValue, 3)}
+        />
+        <p>
+          NumberPicker
+          (buttonPlacement=&quot;right&quot;,&nbsp;allowEmptyValue=true,&nbsp;showError=true,&nbsp;value=&quot;&quot;)
+        </p>
+        <NumberInput
+          buttonPlacement="right"
+          allowEmptyValue
+          showError
+          value={numberInputValues[4]}
+          onChange={(newValue: string) => this.changeNumberInputValue(newValue, 4)}
+        />
+        <p>
+          NumberPicker
+          (buttonPlacement=&quot;right&quot;,&nbsp;allowEmptyValue=true,&nbsp;defaultValue=10,&nbsp;
+          placeholder=&quot;Enter a number&quot;)
+        </p>
+        <NumberInput
+          buttonPlacement="right"
+          allowEmptyValue
+          defaultValue={10}
+          placeholder="Enter a number"
+          value={numberInputValues[5]}
+          onChange={(newValue: string) => this.changeNumberInputValue(newValue, 5)}
+        />
+        <h2>NumberInput sizes</h2>
+        <p>Mini</p>
+        <NumberInput
+          size="mini"
+          value={numberInputValues[6]}
+          onChange={(newValue: string) => this.changeNumberInputValue(newValue, 6)}
+        />
+        <p>Small</p>
+        <NumberInput
+          size="small"
+          value={numberInputValues[7]}
+          onChange={(newValue: string) => this.changeNumberInputValue(newValue, 7)}
+        />
+        <p>Large</p>
+        <NumberInput
+          size="large"
+          value={numberInputValues[8]}
+          onChange={(newValue: string) => this.changeNumberInputValue(newValue, 8)}
+        />
+        <p>Big</p>
+        <NumberInput
+          size="big"
+          value={numberInputValues[9]}
+          onChange={(newValue: string) => this.changeNumberInputValue(newValue, 9)}
+        />
+        <p>Huge</p>
+        <NumberInput
+          size="huge"
+          value={numberInputValues[10]}
+          onChange={(newValue: string) => this.changeNumberInputValue(newValue, 10)}
+        />
+        <p>Massive</p>
+        <NumberInput
+          size="massive"
+          value={numberInputValues[11]}
+          onChange={(newValue: string) => this.changeNumberInputValue(newValue, 11)}
         />
         <p>
           <br />

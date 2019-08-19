@@ -1,30 +1,33 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`NumberInput should render correctly 1`] = `
+exports[`render() should render component correctly when buttonPlacement is "leftAndRight" 1`] = `
 <div
-  className={null}
-  id={null}
+  className="testClassName"
+  id="testId"
 >
   <Button
     as="button"
     disabled={false}
     icon="minus"
     onClick={[Function]}
-    size="small"
+    size="large"
     style={
       Object {
-        "borderRadius": 0,
+        "borderBottomRightRadius": 0,
+        "borderTopRightRadius": 0,
         "lineHeight": "calc(1em + 2px)",
         "margin": 0,
       }
     }
   />
   <div
-    className="ui input small"
+    className="ui input large"
   >
     <input
       maxLength={10}
+      onBlur={[Function]}
       onChange={[Function]}
+      placeholder="testPlaceholder"
       style={
         Object {
           "borderRadius": 0,
@@ -40,10 +43,11 @@ exports[`NumberInput should render correctly 1`] = `
     disabled={false}
     icon="plus"
     onClick={[Function]}
-    size="small"
+    size="large"
     style={
       Object {
-        "borderRadius": 0,
+        "borderBottomLeftRadius": 0,
+        "borderTopLeftRadius": 0,
         "lineHeight": "calc(1em + 2px)",
         "margin": 0,
       }
@@ -52,10 +56,10 @@ exports[`NumberInput should render correctly 1`] = `
 </div>
 `;
 
-exports[`NumberInput should render correctly when buttonPlacement is right 1`] = `
+exports[`render() should render component correctly when buttonPlacement is "right" 1`] = `
 <div
-  className={null}
-  id={null}
+  className="testClassName"
+  id="testId"
   style={
     Object {
       "display": "flex",
@@ -63,14 +67,17 @@ exports[`NumberInput should render correctly when buttonPlacement is right 1`] =
   }
 >
   <div
-    className="ui input small"
+    className="ui input large"
   >
     <input
       maxLength={10}
+      onBlur={[Function]}
       onChange={[Function]}
+      placeholder="testPlaceholder"
       style={
         Object {
-          "borderRadius": 0,
+          "borderBottomRightRadius": 0,
+          "borderTopRightRadius": 0,
           "textAlign": "right",
         }
       }
@@ -91,10 +98,12 @@ exports[`NumberInput should render correctly when buttonPlacement is right 1`] =
       disabled={false}
       icon="caret up"
       onClick={[Function]}
-      size="small"
+      size="large"
       style={
         Object {
-          "borderRadius": 0,
+          "borderBottomLeftRadius": 0,
+          "borderBottomRightRadius": 0,
+          "borderTopLeftRadius": 0,
           "flex": "0 0 50%",
           "margin": 0,
           "maxHeight": "unset",
@@ -108,10 +117,12 @@ exports[`NumberInput should render correctly when buttonPlacement is right 1`] =
       disabled={false}
       icon="caret down"
       onClick={[Function]}
-      size="small"
+      size="large"
       style={
         Object {
-          "borderRadius": 0,
+          "borderBottomLeftRadius": 0,
+          "borderTopLeftRadius": 0,
+          "borderTopRightRadius": 0,
           "flex": "0 0 50%",
           "margin": 0,
           "maxHeight": "unset",
@@ -121,5 +132,58 @@ exports[`NumberInput should render correctly when buttonPlacement is right 1`] =
       }
     />
   </div>
+</div>
+`;
+
+exports[`render() should render component correctly when showError is true 1`] = `
+<div>
+  <Button
+    as="button"
+    disabled={false}
+    icon="minus"
+    onClick={[Function]}
+    size="small"
+    style={
+      Object {
+        "borderBottomRightRadius": 0,
+        "borderTopRightRadius": 0,
+        "lineHeight": "calc(1em + 2px)",
+        "margin": 0,
+      }
+    }
+  />
+  <div
+    className="ui input small error"
+  >
+    <input
+      maxLength={10}
+      onBlur={[Function]}
+      onChange={[Function]}
+      placeholder="Enter a value"
+      style={
+        Object {
+          "borderRadius": 0,
+          "textAlign": "right",
+        }
+      }
+      type="text"
+      value="1"
+    />
+  </div>
+  <Button
+    as="button"
+    disabled={false}
+    icon="plus"
+    onClick={[Function]}
+    size="small"
+    style={
+      Object {
+        "borderBottomLeftRadius": 0,
+        "borderTopLeftRadius": 0,
+        "lineHeight": "calc(1em + 2px)",
+        "margin": 0,
+      }
+    }
+  />
 </div>
 `;

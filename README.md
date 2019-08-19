@@ -94,13 +94,13 @@ Numeric input control with step buttons for [Semantic UI React]
     buttonPlacement: 'right' | 'leftAndRight'  
     id: string,
     className: string,
-    defaultValue: number
+    defaultValue: number,
     minValue: number, 
     maxValue: number,   
     maxLength: number,
     placeholder: string,
     precision: number,
-    showError: boolean
+    showError: boolean,
     size: 'mini' | 'small' | 'large' | 'big' | 'huge' | 'massive',
     stepAmount: number,
     valueType: 'integer' | 'decimal'

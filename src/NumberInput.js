@@ -20,22 +20,21 @@ import ButtonUtils from './ButtonUtils';
 // noinspection JSUnusedGlobalSymbols
 export default class NumberInput extends React.Component<Props, {}> {
   static propTypes = {
-    // eslint-disable-next-line react/require-default-props
-    value: PropValidators.validateValue,
+    value: PropTypes.string.isRequired,
     onChange: PropTypes.func.isRequired,
     allowEmptyValue: PropTypes.bool,
     buttonPlacement: PropTypes.oneOf(['right', 'leftAndRight']),
     className: PropTypes.string,
-    defaultValue: PropValidators.validateDefaultValue,
+    defaultValue: PropTypes.number,
     id: PropTypes.string,
-    minValue: PropValidators.validateMinValue,
-    maxValue: PropValidators.validateMaxValue,
-    maxLength: PropValidators.validateMaxLength,
+    minValue: PropTypes.number,
+    maxValue: PropTypes.number,
+    maxLength: PropTypes.number,
     placeholder: PropTypes.string,
-    precision: PropValidators.validatePrecision,
+    precision: PropTypes.number,
     showError: PropTypes.bool,
     size: PropTypes.oneOf(['mini', 'small', 'large', 'big', 'huge', 'massive']),
-    stepAmount: PropValidators.validateStepAmount,
+    stepAmount: PropTypes.number,
     valueType: PropTypes.oneOf(['integer', 'decimal'])
   };
 
@@ -143,6 +142,7 @@ export default class NumberInput extends React.Component<Props, {}> {
   };
 
   render(): Element<*> {
+    PropValidators.validatePropsInDevelopmentMode(this.props);
     const { buttonPlacement, className, id } = this.props;
 
     if (buttonPlacement === 'leftAndRight') {

@@ -29,14 +29,12 @@ describe('isValidValue (value: number, valueType: ValueType): boolean', () => {
   });
 });
 
-describe('validatePositiveInteger(value: number, valueName: string): ?Error', () => {
-  it('should return null if value is positive integer', () => {
-    const possibleError = Validators.validatePositiveInteger(10, 'testValue');
-    expect(possibleError).toBeNull();
+describe('validatePositiveInteger(value: number, valueName: string)', () => {
+  it('should not throw if value is positive integer', () => {
+    Validators.validatePositiveInteger(10, 'testValue');
   });
 
-  test.each([[-1], [0], [1.5]])('it should return error if value is not positive integer', (value) => {
-    const possibleError = Validators.validatePositiveInteger(value, 'testValue');
-    expect(possibleError).not.toBeNull();
+  test.each([[-1], [0], [1.5]])('it should throw if value is not positive integer', (value) => {
+    expect(() => Validators.validatePositiveInteger(value, 'testValue')).toThrow();
   });
 });

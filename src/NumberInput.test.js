@@ -2,9 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { mount, shallow as renderShallow } from 'enzyme';
 import NumberInput from './NumberInput';
-import PropValidators from './PropValidators';
 
 let onChangeMock;
+
+process.env.NODE_ENV = 'development';
 
 beforeEach(() => {
   onChangeMock = jest.fn();
@@ -15,7 +16,7 @@ describe('propTypes', () => {
   const { propTypes } = NumberInput;
 
   it('should validate value prop', () => {
-    expect(propTypes.value).toBe(PropValidators.validateValue);
+    expect(propTypes.value).toBe(PropTypes.string.isRequired);
   });
 
   it('should validate onChange prop', () => {
@@ -35,7 +36,7 @@ describe('propTypes', () => {
   });
 
   it('should validate defaultValue prop', () => {
-    expect(propTypes.defaultValue).toBe(PropValidators.validateDefaultValue);
+    expect(propTypes.defaultValue).toBe(PropTypes.number);
   });
 
   it('should validate id prop', () => {
@@ -43,15 +44,15 @@ describe('propTypes', () => {
   });
 
   it('should validate minValue prop', () => {
-    expect(propTypes.minValue).toBe(PropValidators.validateMinValue);
+    expect(propTypes.minValue).toBe(PropTypes.number);
   });
 
   it('should validate maxValue prop', () => {
-    expect(propTypes.maxValue).toBe(PropValidators.validateMaxValue);
+    expect(propTypes.maxValue).toBe(PropTypes.number);
   });
 
   it('should validate maxLength prop', () => {
-    expect(propTypes.maxLength).toBe(PropValidators.validateMaxLength);
+    expect(propTypes.maxLength).toBe(PropTypes.number);
   });
 
   it('should validate placeholder prop', () => {
@@ -59,7 +60,7 @@ describe('propTypes', () => {
   });
 
   it('should validate precision prop', () => {
-    expect(propTypes.precision).toBe(PropValidators.validatePrecision);
+    expect(propTypes.precision).toBe(PropTypes.number);
   });
 
   it('should validate showError prop', () => {
@@ -71,7 +72,7 @@ describe('propTypes', () => {
   });
 
   it('should validate stepAmount prop', () => {
-    expect(propTypes.stepAmount).toBe(PropValidators.validateStepAmount);
+    expect(propTypes.stepAmount).toBe(PropTypes.number);
   });
 
   it('should validate valueType prop', () => {
@@ -265,15 +266,6 @@ describe('changeValue()', () => {
     input.simulate('change', { target: { value: '' } });
     expect(onChangeMock).toHaveBeenCalledWith('');
   });
-
-  test('it should not allow changing value beyond maxLength', () => {
-    const numberInput = mount(<NumberInput value="99" maxLength={2} onChange={onChangeMock} />);
-    const input = numberInput.find('input');
-    input.simulate('focus');
-    input.simulate('keypress', { key: '9' });
-    expect(input.props().value).toBe('99');
-    expect(onChangeMock).not.toHaveBeenCalled();
-  });
 });
 
 describe('onInputBlur()', () => {
@@ -304,6 +296,12 @@ describe('onInputBlur()', () => {
 });
 
 describe('render()', () => {
+  it('should validate props and throw upon invalid prop in development mode', () => {
+    expect(() =>
+      renderShallow(<NumberInput allowEmptyValue={false} onChange={onChangeMock} value="" />)
+    ).toThrow();
+  });
+
   it('should render component correctly when buttonPlacement is "leftAndRight"', () => {
     const numberInput = renderShallow(
       <NumberInput

@@ -1,0 +1,204 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render() should render component correctly when buttonPlacement is "leftAndRight" 1`] = `
+<div
+  className="testClassName"
+  id="testId"
+  style={
+    Object {
+      "display": "flex",
+    }
+  }
+>
+  <Button
+    as="button"
+    disabled={false}
+    icon="minus"
+    onClick={[Function]}
+    size="large"
+    style={
+      Object {
+        "borderBottomRightRadius": 0,
+        "borderTopRightRadius": 0,
+        "margin": 0,
+        "maxHeight": "unset",
+        "minHeight": "unset",
+      }
+    }
+  />
+  <div
+    className="ui input large"
+  >
+    <input
+      maxLength={10}
+      onBlur={[Function]}
+      onChange={[Function]}
+      placeholder="testPlaceholder"
+      style={
+        Object {
+          "borderRadius": 0,
+          "textAlign": "right",
+        }
+      }
+      type="text"
+      value="1"
+    />
+  </div>
+  <Button
+    as="button"
+    disabled={false}
+    icon="plus"
+    onClick={[Function]}
+    size="large"
+    style={
+      Object {
+        "borderBottomLeftRadius": 0,
+        "borderTopLeftRadius": 0,
+        "margin": 0,
+        "maxHeight": "unset",
+        "minHeight": "unset",
+      }
+    }
+  />
+</div>
+`;
+
+exports[`render() should render component correctly when buttonPlacement is "right" 1`] = `
+<div
+  className="testClassName"
+  id="testId"
+  style={
+    Object {
+      "display": "flex",
+    }
+  }
+>
+  <div
+    className="ui input large"
+  >
+    <input
+      maxLength={10}
+      onBlur={[Function]}
+      onChange={[Function]}
+      placeholder="testPlaceholder"
+      style={
+        Object {
+          "borderBottomRightRadius": 0,
+          "borderTopRightRadius": 0,
+          "textAlign": "right",
+        }
+      }
+      type="text"
+      value="1"
+    />
+  </div>
+  <div
+    style={
+      Object {
+        "display": "flex",
+        "flexDirection": "column",
+      }
+    }
+  >
+    <Button
+      as="button"
+      disabled={false}
+      icon="caret up"
+      onClick={[Function]}
+      size="large"
+      style={
+        Object {
+          "borderBottomLeftRadius": 0,
+          "borderBottomRightRadius": 0,
+          "borderTopLeftRadius": 0,
+          "flex": "0 0 50%",
+          "margin": 0,
+          "maxHeight": "unset",
+          "minHeight": "unset",
+          "padding": "0 0.2em",
+        }
+      }
+    />
+    <Button
+      as="button"
+      disabled={false}
+      icon="caret down"
+      onClick={[Function]}
+      size="large"
+      style={
+        Object {
+          "borderBottomLeftRadius": 0,
+          "borderTopLeftRadius": 0,
+          "borderTopRightRadius": 0,
+          "flex": "0 0 50%",
+          "margin": 0,
+          "maxHeight": "unset",
+          "minHeight": "unset",
+          "padding": "0 0.2em",
+        }
+      }
+    />
+  </div>
+</div>
+`;
+
+exports[`render() should render component correctly when showError is true 1`] = `
+<div
+  style={
+    Object {
+      "display": "flex",
+    }
+  }
+>
+  <Button
+    as="button"
+    disabled={false}
+    icon="minus"
+    onClick={[Function]}
+    size="small"
+    style={
+      Object {
+        "borderBottomRightRadius": 0,
+        "borderTopRightRadius": 0,
+        "margin": 0,
+        "maxHeight": "unset",
+        "minHeight": "unset",
+      }
+    }
+  />
+  <div
+    className="ui input small error"
+  >
+    <input
+      maxLength={10}
+      onBlur={[Function]}
+      onChange={[Function]}
+      placeholder="Enter a value"
+      style={
+        Object {
+          "borderRadius": 0,
+          "textAlign": "right",
+        }
+      }
+      type="text"
+      value="1"
+    />
+  </div>
+  <Button
+    as="button"
+    disabled={false}
+    icon="plus"
+    onClick={[Function]}
+    size="small"
+    style={
+      Object {
+        "borderBottomLeftRadius": 0,
+        "borderTopLeftRadius": 0,
+        "margin": 0,
+        "maxHeight": "unset",
+        "minHeight": "unset",
+      }
+    }
+  />
+</div>
+`;

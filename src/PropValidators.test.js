@@ -1,173 +1,175 @@
 import PropValidators from './PropValidators';
 
-describe('validateValue(props: Props): ?Error', () => {
-  it('should return null if allowEmptyValue is true and value is empty', () => {
-    const possibleError = PropValidators.validateValue({
+describe('validateValue(props: Props)', () => {
+  it('should not throw if allowEmptyValue is true and value is empty', () => {
+    PropValidators.validateValue({
       allowEmptyValue: true,
       value: ''
     });
-    expect(possibleError).toBeNull();
   });
 
-  it('should return Error if allowEmptyValue is false and value is empty', () => {
-    const possibleError = PropValidators.validateValue({
-      allowEmptyValue: false,
-      value: ''
-    });
-    expect(possibleError).not.toBeNull();
+  it('should throw if allowEmptyValue is false and value is empty', () => {
+    expect(() =>
+      PropValidators.validateValue({
+        allowEmptyValue: false,
+        value: ''
+      })
+    ).toThrow();
   });
 
-  it('should return null if value is valid', () => {
-    const possibleError = PropValidators.validateValue({
+  it('should not throw if value is valid', () => {
+    PropValidators.validateValue({
       allowEmptyValue: false,
       value: '2',
       valueType: 'integer'
     });
-    expect(possibleError).toBeNull();
   });
 
-  it('should return error if value is not valid', () => {
-    const possibleError = PropValidators.validateValue({
-      allowEmptyValue: false,
-      value: 'x',
-      valueType: 'integer'
-    });
-    expect(possibleError).not.toBeNull();
+  it('should throw if value is not valid', () => {
+    expect(() =>
+      PropValidators.validateValue({
+        allowEmptyValue: false,
+        value: 'x',
+        valueType: 'integer'
+      })
+    ).toThrow();
   });
 });
 
-describe('validateDefaultValue(props: Props): ?Error', () => {
-  it('should return null if defaultValue is missing', () => {
-    const possibleError = PropValidators.validateDefaultValue({});
-    expect(possibleError).toBeNull();
+describe('validateDefaultValue(props: Props)', () => {
+  it('should not throw if defaultValue is missing', () => {
+    PropValidators.validateDefaultValue({});
   });
 
-  it('should return null if defaultValue is valid', () => {
-    const possibleError = PropValidators.validateDefaultValue({
+  it('should not throw if defaultValue is valid', () => {
+    PropValidators.validateDefaultValue({
       defaultValue: 10,
       valueType: 'integer'
     });
-    expect(possibleError).toBeNull();
   });
 
-  it('should return error if defaultValue is not valid', () => {
-    const possibleError = PropValidators.validateDefaultValue({
-      defaultValue: 'x',
-      valueType: 'integer'
-    });
-    expect(possibleError).not.toBeNull();
+  it('should throw if defaultValue is not valid', () => {
+    expect(() =>
+      PropValidators.validateDefaultValue({
+        defaultValue: 'x',
+        valueType: 'integer'
+      })
+    ).toThrow();
   });
 });
 
-describe('validateMinValue(props: Props): ?Error', () => {
-  it('should return error if minValue is greater than maxValue', () => {
-    const possibleError = PropValidators.validateMinValue({
-      minValue: 11,
-      maxValue: 10
-    });
-    expect(possibleError).not.toBeNull();
-  });
-
-  it('should return error if minValue length greater than maxLength', () => {
-    const possibleError = PropValidators.validateMinValue({
-      minValue: 111,
-      maxLength: 2
-    });
-    expect(possibleError).not.toBeNull();
-  });
-
-  it('should return null if minValue is valid', () => {
-    const possibleError = PropValidators.validateMinValue({
+describe('validateMinValue(props: Props)', () => {
+  it('should not throw if minValue is valid', () => {
+    PropValidators.validateMinValue({
       minValue: 10,
       valueType: 'integer'
     });
-    expect(possibleError).toBeNull();
   });
 
-  it('should return error if minValue is not valid', () => {
-    const possibleError = PropValidators.validateMinValue({
-      minValue: 'x',
-      valueType: 'integer'
-    });
-    expect(possibleError).not.toBeNull();
+  it('should throw if minValue is greater than maxValue', () => {
+    expect(() =>
+      PropValidators.validateMinValue({
+        minValue: 11,
+        maxValue: 10
+      })
+    ).toThrow();
+  });
+
+  it('should throw if minValue length greater than maxLength', () => {
+    expect(() =>
+      PropValidators.validateMinValue({
+        minValue: 111,
+        maxLength: 2
+      })
+    ).toThrow();
+  });
+
+  it('should throw if minValue is not valid', () => {
+    expect(() =>
+      PropValidators.validateMinValue({
+        minValue: 'x',
+        valueType: 'integer'
+      })
+    ).toThrow();
   });
 });
 
-describe('validateMaxValue(props: Props): ?Error', () => {
-  it('should return error if maxValue length greater than maxLength', () => {
-    const possibleError = PropValidators.validateMaxValue({
-      minValue: 111,
-      maxLength: 2
-    });
-    expect(possibleError).not.toBeNull();
-  });
-
-  it('should return null if maxValue is valid', () => {
-    const possibleError = PropValidators.validateMaxValue({
+describe('validateMaxValue(props: Props)', () => {
+  it('should not throw if maxValue is valid', () => {
+    PropValidators.validateMaxValue({
       maxValue: 10,
       valueType: 'integer'
     });
-    expect(possibleError).toBeNull();
   });
 
-  it('should return error if maxValue is not valid', () => {
-    const possibleError = PropValidators.validateMaxValue({
-      maxValue: '',
-      valueType: 'integer'
-    });
-    expect(possibleError).not.toBeNull();
+  it('should throw if maxValue length greater than maxLength', () => {
+    expect(() =>
+      PropValidators.validateMaxValue({
+        minValue: 111,
+        maxLength: 2
+      })
+    ).toThrow();
+  });
+
+  it('should throw if maxValue is not valid', () => {
+    expect(() =>
+      PropValidators.validateMaxValue({
+        maxValue: '',
+        valueType: 'integer'
+      })
+    ).toThrow();
   });
 });
 
-describe('validateMaxLength(props: Props): ?Error', () => {
-  it('should return null if maxLength is positive integer', () => {
-    const possibleError = PropValidators.validateMaxLength({
+describe('validateMaxLength(props: Props)', () => {
+  it('should not throw if maxLength is positive integer', () => {
+    PropValidators.validateMaxLength({
       maxLength: 1
     });
-    expect(possibleError).toBeNull();
   });
 
-  test.each([[0], [-1]])('it should return error if maxLength is not positive integer', (maxLength) => {
-    const possibleError = PropValidators.validateMaxLength({
-      maxLength
-    });
-    expect(possibleError).not.toBeNull();
+  test.each([[0], [-1]])('it should throw if maxLength is not positive integer', (maxLength) => {
+    expect(() =>
+      PropValidators.validateMaxLength({
+        maxLength
+      })
+    ).toThrow();
   });
 });
 
-describe('validatePrecision(props: Props): ?Error', () => {
-  it('should return null if precision is positive integer', () => {
-    const possibleError = PropValidators.validatePrecision({
+describe('validatePrecision(props: Props)', () => {
+  it('should not throw if precision is positive integer', () => {
+    PropValidators.validatePrecision({
       precision: 1
     });
-    expect(possibleError).toBeNull();
   });
 
-  test.each([[0], [-1]])('it should return error if precision is not positive integer', (precision) => {
-    const possibleError = PropValidators.validatePrecision({
-      precision
-    });
-    expect(possibleError).not.toBeNull();
+  test.each([[0], [-1]])('it should throw if precision is not positive integer', (precision) => {
+    expect(() =>
+      PropValidators.validatePrecision({
+        precision
+      })
+    ).toThrow();
   });
 });
 
-describe('validateStepAmount(props: Props): ?Error', () => {
-  it('should return null if stepAmount is positive integer/decimal', () => {
-    const possibleError = PropValidators.validateStepAmount({
+describe('validateStepAmount(props: Props)', () => {
+  it('should not throw if stepAmount is positive integer/decimal', () => {
+    PropValidators.validateStepAmount({
       stepAmount: 1.25,
       valueType: 'decimal'
     });
-    expect(possibleError).toBeNull();
   });
 
   test.each([[0], [-1.25]])(
-    'it should return error if stepAmount is not positive integer/decimal',
+    'it should throw  if stepAmount is not positive integer/decimal',
     (stepAmount) => {
-      const possibleError = PropValidators.validateStepAmount({
-        stepAmount,
-        valueType: 'decimal'
-      });
-      expect(possibleError).not.toBeNull();
+      expect(() =>
+        PropValidators.validateStepAmount({
+          stepAmount,
+          valueType: 'decimal'
+        })
+      ).toThrow();
     }
   );
 });

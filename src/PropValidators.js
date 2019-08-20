@@ -8,66 +8,73 @@ import Validators from './Validators';
 import NumberUtils from './NumberUtils';
 
 export default class PropValidators {
-  static validateValue(props: Props): ?Error {
-    if (!props.allowEmptyValue && !props.value) {
-      return new Error('value is required');
-    }
+  static validateValue(props: Props) {
+    PropValidators.validateEmptyValue(props.allowEmptyValue, props.value);
     if (props.allowEmptyValue && !props.value) {
-      return null;
+      return;
     }
     const value = NumberUtils.getParsedValue(props.value, props.valueType);
     if (!Validators.isValidValue(value, props.valueType)) {
-      return new Error(
+      throw new Error(
         'value must be a string that can be parsed to integer/decimal number depending on valueType'
       );
     }
-    return null;
   }
 
-  static validateDefaultValue(props: Props): ?Error {
+  static validateEmptyValue(allowEmptyValue: boolean, value: string) {
+    if (!allowEmptyValue && !value) {
+      throw new Error('value is required');
+    }
+  }
+
+  static validateDefaultValue(props: Props) {
     if (props.defaultValue !== undefined && !Validators.isValidValue(props.defaultValue, props.valueType)) {
-      return new Error('defaultValue must be integer/decimal number depending on valueType');
+      throw new Error('defaultValue must be integer/decimal number depending on valueType');
     }
-    return null;
   }
 
-  static validateMinValue(props: Props): ?Error {
+  static validateMinValue(props: Props) {
     if (props.minValue > props.maxValue) {
-      return new Error('maxValue must greater than or equal to minValue');
+      throw new Error('maxValue must greater than or equal to minValue');
     }
-    return PropValidators.validateMinOrMaxValue(props.valueType, props.minValue, 'minValue', props.maxLength);
+    PropValidators.validateMinOrMaxValue(props.valueType, props.minValue, 'minValue', props.maxLength);
   }
 
-  static validateMaxValue = (props: Props): ?Error =>
+  static validateMaxValue = (props: Props) =>
     PropValidators.validateMinOrMaxValue(props.valueType, props.maxValue, 'maxValue', props.maxLength);
 
-  static validateMinOrMaxValue(
-    valueType: ValueType,
-    value: number,
-    valueName: string,
-    maxLength: number
-  ): ?Error {
+  static validateMinOrMaxValue(valueType: ValueType, value: number, valueName: string, maxLength: number) {
     if (!Validators.isValidValue(value, valueType)) {
-      return new Error(`${valueName} must be integer/decimal number depending on valueType`);
+      throw new Error(`${valueName} must be integer/decimal number depending on valueType`);
     }
     if (value.toString().length > maxLength) {
-      return new Error(`${valueName} does not fit in maxLength`);
+      throw new Error(`${valueName} does not fit in maxLength`);
     }
-    return null;
   }
 
-  static validateMaxLength(props: Props): ?Error {
-    return Validators.validatePositiveInteger(props.maxLength, 'maxLength');
+  static validateMaxLength(props: Props) {
+    Validators.validatePositiveInteger(props.maxLength, 'maxLength');
   }
 
-  static validatePrecision(props: Props): ?Error {
-    return Validators.validatePositiveInteger(props.precision, 'precision');
+  static validatePrecision(props: Props) {
+    Validators.validatePositiveInteger(props.precision, 'precision');
   }
 
-  static validateStepAmount(props: Props): ?Error {
+  static validateStepAmount(props: Props) {
     if (!Validators.isValidValue(props.stepAmount, props.valueType) || props.stepAmount <= 0) {
-      return new Error('stepAmount must be a positive integer/decimal number depending on valueType');
+      throw new Error('stepAmount must be a positive integer/decimal number depending on valueType');
     }
-    return null;
+  }
+
+  static validatePropsInDevelopmentMode(props: Props) {
+    if (process.env.NODE_ENV === 'development') {
+      PropValidators.validateValue(props);
+      PropValidators.validateDefaultValue(props);
+      PropValidators.validateMinValue(props);
+      PropValidators.validateMaxValue(props);
+      PropValidators.validateMaxLength(props);
+      PropValidators.validatePrecision(props);
+      PropValidators.validateStepAmount(props);
+    }
   }
 }

@@ -1,6 +1,6 @@
 {
   "name": "semantic-ui-react-numberinput",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "description": "Numeric input control with step buttons for Semantic UI React",
   "main": "lib/NumberInput.js",
   "scripts": {

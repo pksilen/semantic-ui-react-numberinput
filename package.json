@@ -3,6 +3,7 @@
   "version": "1.2.4",
   "description": "Numeric input control with step buttons for Semantic UI React",
   "main": "lib/NumberInput.js",
+  "files": ["lib"],
   "scripts": {
     "build": "babel ./src --out-dir ./lib --source-maps --ignore \"src/**/*.test.js\",\"src/setupTests.js\"",
     "build-demo": "prettier --check demo/demo.js && flow demo/demo.js && eslint demo/demo.js && webpack",

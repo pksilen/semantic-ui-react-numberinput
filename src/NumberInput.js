@@ -5,17 +5,17 @@ import type { Element } from 'react';
 import PropTypes from 'prop-types';
 import { Button } from 'semantic-ui-react';
 // $FlowFixMe
-import PropValidators from './PropValidators';
+import PropValidators from './validators/PropValidators';
 // $FlowFixMe
-import Validators from './Validators';
+import Validators from './validators/Validators';
 // $FlowFixMe
-import type { ButtonType, Props } from './Types';
+import type { ButtonType, Props } from './types/Types';
 // $FlowFixMe
 import style from './style';
 // $FlowFixMe
-import NumberUtils from './NumberUtils';
+import NumberUtils from './utils/NumberUtils';
 // $FlowFixMe
-import ButtonUtils from './ButtonUtils';
+import ButtonUtils from './utils/ButtonUtils';
 
 // noinspection JSUnusedGlobalSymbols
 export default class NumberInput extends React.Component<Props, {}> {

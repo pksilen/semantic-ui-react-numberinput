@@ -59,24 +59,20 @@ export default class NumberInput extends React.Component<Props, {}> {
   decrementValue = () => {
     const { minValue, onChange, precision, stepAmount, value, valueType } = this.props;
     const currentValue = NumberUtils.getParsedValue(value, valueType);
+    const newValue = currentValue - stepAmount;
 
-    if (Validators.isValidValue(currentValue, valueType)) {
-      const newValue = currentValue - stepAmount;
-      if (newValue >= minValue) {
-        onChange(NumberUtils.getValueWithPrecisionAsString(newValue, valueType, precision));
-      }
+    if (Validators.isValidValue(newValue, valueType) && newValue >= minValue) {
+      onChange(NumberUtils.getValueWithPrecisionAsString(newValue, valueType, precision));
     }
   };
 
   incrementValue = () => {
     const { maxValue, onChange, precision, stepAmount, value, valueType } = this.props;
     const currentValue = NumberUtils.getParsedValue(value, valueType);
+    const newValue = currentValue + stepAmount;
 
-    if (Validators.isValidValue(currentValue, valueType)) {
-      const newValue = currentValue + stepAmount;
-      if (newValue <= maxValue) {
-        onChange(NumberUtils.getValueWithPrecisionAsString(newValue, valueType, precision));
-      }
+    if (Validators.isValidValue(newValue, valueType) && newValue <= maxValue) {
+      onChange(NumberUtils.getValueWithPrecisionAsString(newValue, valueType, precision));
     }
   };
 
@@ -84,10 +80,8 @@ export default class NumberInput extends React.Component<Props, {}> {
     const { allowEmptyValue, maxValue, minValue, onChange, precision, valueType } = this.props;
     const newValue = NumberUtils.getParsedValue(value, valueType);
 
-    if (Validators.isValidValue(newValue, valueType)) {
-      if (newValue >= minValue && newValue <= maxValue) {
-        onChange(NumberUtils.getValueWithPrecisionAsString(newValue, valueType, precision));
-      }
+    if (Validators.isValidValue(newValue, valueType) && newValue >= minValue && newValue <= maxValue) {
+      onChange(NumberUtils.getValueWithPrecisionAsString(newValue, valueType, precision));
     } else if (allowEmptyValue && !value) {
       onChange('');
     }

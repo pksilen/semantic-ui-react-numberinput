@@ -25,6 +25,10 @@ import type { OptionalProps } from './types/Props';
 export default class NumberInput extends React.Component<Props, {}> {
   static DOUBLE_CLICK_DELAY_IN_MILLIS = 250;
 
+  static TOOLTIP_SHOW_DELAY_IN_MILLIS = 500;
+
+  static TOOLTIP_HIDE_DELAY_IN_MILLIS = 200;
+
   static propTypes = {
     value: PropTypes.string.isRequired,
     onChange: PropTypes.func.isRequired,
@@ -198,7 +202,15 @@ export default class NumberInput extends React.Component<Props, {}> {
 
     if (showTooltips && doubleClickStepAmount > 0) {
       const tooltipText = `Double-click to ${buttonType} by ${doubleClickStepAmount}`;
-      return <Popup content={tooltipText} trigger={buttonComponent} />;
+      return (
+        <Popup
+          content={tooltipText}
+          mouseEnterDelay={NumberInput.TOOLTIP_SHOW_DELAY_IN_MILLIS}
+          mouseLeaveDelay={NumberInput.TOOLTIP_HIDE_DELAY_IN_MILLIS}
+          on="hover"
+          trigger={buttonComponent}
+        />
+      );
     }
 
     return buttonComponent;

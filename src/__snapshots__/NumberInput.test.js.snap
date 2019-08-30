@@ -214,20 +214,30 @@ exports[`render() should render component correctly with button tooltips when do
     }
   }
 >
-  <Button
-    as="button"
+  <Popup
+    content="Double-click to decrement by 2"
     disabled={false}
-    icon="minus"
-    onClick={[Function]}
-    size="small"
-    style={
-      Object {
-        "borderBottomRightRadius": 0,
-        "borderTopRightRadius": 0,
-        "margin": 0,
-        "maxHeight": "unset",
-        "minHeight": "unset",
-      }
+    offset={0}
+    on="hover"
+    pinned={false}
+    position="top left"
+    trigger={
+      <Button
+        as="button"
+        disabled={false}
+        icon="minus"
+        onClick={[Function]}
+        size="small"
+        style={
+          Object {
+            "borderBottomRightRadius": 0,
+            "borderTopRightRadius": 0,
+            "margin": 0,
+            "maxHeight": "unset",
+            "minHeight": "unset",
+          }
+        }
+      />
     }
   />
   <div
@@ -249,20 +259,30 @@ exports[`render() should render component correctly with button tooltips when do
       value="1"
     />
   </div>
-  <Button
-    as="button"
+  <Popup
+    content="Double-click to increment by 2"
     disabled={false}
-    icon="plus"
-    onClick={[Function]}
-    size="small"
-    style={
-      Object {
-        "borderBottomLeftRadius": 0,
-        "borderTopLeftRadius": 0,
-        "margin": 0,
-        "maxHeight": "unset",
-        "minHeight": "unset",
-      }
+    offset={0}
+    on="hover"
+    pinned={false}
+    position="top left"
+    trigger={
+      <Button
+        as="button"
+        disabled={false}
+        icon="plus"
+        onClick={[Function]}
+        size="small"
+        style={
+          Object {
+            "borderBottomLeftRadius": 0,
+            "borderTopLeftRadius": 0,
+            "margin": 0,
+            "maxHeight": "unset",
+            "minHeight": "unset",
+          }
+        }
+      />
     }
   />
 </div>

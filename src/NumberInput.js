@@ -180,7 +180,7 @@ export default class NumberInput extends React.Component<Props, {}> {
   };
 
   getButtonComponent = (buttonType: ButtonType): Element<*> => {
-    const { buttonPlacement, doubleClickSteAmount, showTooltips, size } = this.props;
+    const { buttonPlacement, doubleClickStepAmount, showTooltips, size } = this.props;
     const buttonStyle = {
       ...style[buttonPlacement].button.base,
       ...style[buttonPlacement].button[buttonType]
@@ -196,8 +196,8 @@ export default class NumberInput extends React.Component<Props, {}> {
       />
     );
 
-    if (showTooltips && doubleClickSteAmount > 0) {
-      const tooltipText = `Double-click to ${buttonType} by ${doubleClickSteAmount}`;
+    if (showTooltips && doubleClickStepAmount > 0) {
+      const tooltipText = `Double-click to ${buttonType} by ${doubleClickStepAmount}`;
       return <Popup content={tooltipText} trigger={buttonComponent} />;
     }
 

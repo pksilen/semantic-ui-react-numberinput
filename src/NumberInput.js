@@ -127,7 +127,7 @@ export default class NumberInput extends React.Component<Props, {}> {
   };
 
   onKeyDown = (event: SyntheticKeyboardEvent<HTMLInputElement>) => {
-    event.stopPropagation();
+    let handled = false;
 
     switch (event.key) {
       case 'ArrowUp':
@@ -137,6 +137,7 @@ export default class NumberInput extends React.Component<Props, {}> {
         } else {
           this.decrementOrIncrementValue('increment', false);
         }
+        handled = true;
         break;
 
       case 'ArrowDown':
@@ -146,17 +147,25 @@ export default class NumberInput extends React.Component<Props, {}> {
         } else {
           this.decrementOrIncrementValue('decrement', false);
         }
+        handled = true;
         break;
 
       case 'PageUp':
         _.times(2, () => this.decrementOrIncrementValue('increment'));
+        handled = true;
         break;
 
       case 'PageDown':
         _.times(2, () => this.decrementOrIncrementValue('decrement'));
+        handled = true;
         break;
 
       default:
+    }
+
+    if (handled) {
+      event.stopPropagation();
+      event.preventDefault();
     }
   };
 

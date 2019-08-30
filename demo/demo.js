@@ -33,20 +33,20 @@ class DemoApp extends React.Component<{}, State> {
     return (
       <div style={{ marginLeft: '5px' }}>
         <h1>NumberInput Demo</h1>
-        Default NumberPicker (buttonPlacement=&quot;leftAndRight&quot;)
+        Default NumberInput (buttonPlacement=&quot;leftAndRight&quot;)
         <NumberInput
           value={numberInputValues[0]}
           onChange={(newValue: string) => this.changeNumberInputValue(newValue, 0)}
         />
         <br />
-        NumberPicker (buttonPlacement=&quot;right&quot;)
+        NumberInput (buttonPlacement=&quot;right&quot;)
         <NumberInput
           buttonPlacement="right"
           value={numberInputValues[1]}
           onChange={(newValue: string) => this.changeNumberInputValue(newValue, 1)}
         />
         <br />
-        NumberPicker
+        NumberInput
         (buttonPlacement=&quot;right&quot;,&nbsp;minValue=-100,&nbsp;maxValue=100,&nbsp;stepAmount=5)
         <NumberInput
           buttonPlacement="right"
@@ -57,7 +57,7 @@ class DemoApp extends React.Component<{}, State> {
           onChange={(newValue: string) => this.changeNumberInputValue(newValue, 2)}
         />
         <br />
-        NumberPicker
+        NumberInput
         (buttonPlacement=&quot;right&quot;,&nbsp;valueType=&quot;decimal&quot;,&nbsp;stepAmount=0.25)
         <NumberInput
           buttonPlacement="right"
@@ -67,7 +67,7 @@ class DemoApp extends React.Component<{}, State> {
           onChange={(newValue: string) => this.changeNumberInputValue(newValue, 3)}
         />
         <br />
-        NumberPicker
+        NumberInput
         (buttonPlacement=&quot;right&quot;,&nbsp;allowEmptyValue=true,&nbsp;showError=true,&nbsp;value=&quot;&quot;)
         <NumberInput
           buttonPlacement="right"
@@ -77,8 +77,7 @@ class DemoApp extends React.Component<{}, State> {
           onChange={(newValue: string) => this.changeNumberInputValue(newValue, 4)}
         />
         <br />
-        NumberPicker
-        (buttonPlacement=&quot;right&quot;,&nbsp;allowEmptyValue=true,&nbsp;defaultValue=10,&nbsp;
+        NumberInput (buttonPlacement=&quot;right&quot;,&nbsp;allowEmptyValue=true,&nbsp;defaultValue=10,&nbsp;
         placeholder=&quot;Enter a number&quot;)
         <NumberInput
           buttonPlacement="right"
@@ -89,7 +88,7 @@ class DemoApp extends React.Component<{}, State> {
           onChange={(newValue: string) => this.changeNumberInputValue(newValue, 5)}
         />
         <br />
-        NumberPicker (doubleClickStepAmount=5)
+        NumberInput (doubleClickStepAmount=5)
         <NumberInput
           doubleClickStepAmount={5}
           value={numberInputValues[6]}

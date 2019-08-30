@@ -217,6 +217,8 @@ exports[`render() should render component correctly with button tooltips when do
   <Popup
     content="Double-click to decrement by 2"
     disabled={false}
+    mouseEnterDelay={500}
+    mouseLeaveDelay={200}
     offset={0}
     on="hover"
     pinned={false}
@@ -262,6 +264,8 @@ exports[`render() should render component correctly with button tooltips when do
   <Popup
     content="Double-click to increment by 2"
     disabled={false}
+    mouseEnterDelay={500}
+    mouseLeaveDelay={200}
     offset={0}
     on="hover"
     pinned={false}

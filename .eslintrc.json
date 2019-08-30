@@ -14,6 +14,7 @@
     "function-paren-newline": "off",
     "object-curly-newline": "off",
     "import/no-extraneous-dependencies": "off",
+    "react/state-in-constructor": [1, "never"],
     "react/require-default-props": [1, { "forbidDefaultForRequired": false }],
     "react/default-props-match-prop-types": [1, { "allowRequiredDefaults": true}],
     "react/static-property-placement": [1, "static public field"],

@@ -77,14 +77,12 @@ export default class NumberInput extends React.Component<Props, {}> {
     if (this.timeoutIDMap[buttonType]) {
       window.clearTimeout(this.timeoutIDMap[buttonType]);
       this.decrementOrIncrementValueByStepAmount(buttonType, doubleClickStepAmount);
-    } else {
-      if (hasDoubleClicksEnabled && doubleClickStepAmount > 0) {
-        this.timeoutIDMap[buttonType] = window.setTimeout(() => {
-          this.decrementOrIncrementValueByStepAmount(buttonType, stepAmount);
-        }, NumberInput.DOUBLE_CLICK_DELAY_IN_MILLIS);
-      } else {
+    } else if (hasDoubleClicksEnabled && doubleClickStepAmount > 0) {
+      this.timeoutIDMap[buttonType] = window.setTimeout(() => {
         this.decrementOrIncrementValueByStepAmount(buttonType, stepAmount);
-      }
+      }, NumberInput.DOUBLE_CLICK_DELAY_IN_MILLIS);
+    } else {
+      this.decrementOrIncrementValueByStepAmount(buttonType, stepAmount);
     }
   };
 

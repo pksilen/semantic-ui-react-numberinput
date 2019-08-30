@@ -12,70 +12,25 @@ beforeEach(() => {
 });
 
 describe('propTypes', () => {
-  // eslint-disable-next-line react/forbid-foreign-prop-types
-  const { propTypes } = NumberInput;
-
   it('should validate value prop', () => {
+    // eslint-disable-next-line react/forbid-foreign-prop-types
+    const { propTypes } = NumberInput;
+
     expect(propTypes.value).toBe(PropTypes.string.isRequired);
-  });
-
-  it('should validate onChange prop', () => {
     expect(propTypes.onChange).toBe(PropTypes.func.isRequired);
-  });
-
-  it('should validate allowEmptyValue prop', () => {
     expect(propTypes.allowEmptyValue).toBe(PropTypes.bool);
-  });
-
-  it('should validate buttonPlacement prop', () => {
     expect(propTypes.buttonPlacement).toBeTruthy();
-  });
-
-  it('should validate className prop', () => {
     expect(propTypes.className).toBe(PropTypes.string);
-  });
-
-  it('should validate defaultValue prop', () => {
     expect(propTypes.defaultValue).toBe(PropTypes.number);
-  });
-
-  it('should validate id prop', () => {
     expect(propTypes.id).toBe(PropTypes.string);
-  });
-
-  it('should validate minValue prop', () => {
     expect(propTypes.minValue).toBe(PropTypes.number);
-  });
-
-  it('should validate maxValue prop', () => {
     expect(propTypes.maxValue).toBe(PropTypes.number);
-  });
-
-  it('should validate maxLength prop', () => {
     expect(propTypes.maxLength).toBe(PropTypes.number);
-  });
-
-  it('should validate placeholder prop', () => {
     expect(propTypes.placeholder).toBe(PropTypes.string);
-  });
-
-  it('should validate precision prop', () => {
     expect(propTypes.precision).toBe(PropTypes.number);
-  });
-
-  it('should validate showError prop', () => {
     expect(propTypes.showError).toBe(PropTypes.bool);
-  });
-
-  it('should validate size prop', () => {
     expect(propTypes.size).toBeTruthy();
-  });
-
-  it('should validate stepAmount prop', () => {
     expect(propTypes.stepAmount).toBe(PropTypes.number);
-  });
-
-  it('should validate valueType prop', () => {
     expect(propTypes.showError).toBeTruthy();
   });
 });
@@ -101,18 +56,22 @@ describe('defaultProps', () => {
   });
 });
 
-describe('decrementValue()', () => {
+describe('decrementOrIncrementValue()', () => {
   it('should decrement value by given stepAmount', () => {
     const numberInput = mount(<NumberInput value="3" stepAmount={2} onChange={onChangeMock} />);
     const decrementButton = numberInput.find('button').first();
+
     decrementButton.simulate('click');
+
     expect(onChangeMock).toHaveBeenCalledWith('1');
   });
 
   it('should decrement negative value', () => {
     const numberInput = mount(<NumberInput value="-2" minValue={-100} onChange={onChangeMock} />);
     const decrementButton = numberInput.find('button').first();
+
     decrementButton.simulate('click');
+
     expect(onChangeMock).toHaveBeenCalledWith('-3');
   });
 
@@ -121,14 +80,18 @@ describe('decrementValue()', () => {
       <NumberInput value={Number.MIN_SAFE_INTEGER.toString()} onChange={onChangeMock} />
     );
     const decrementButton = numberInput.find('button').first();
+
     decrementButton.simulate('click');
+
     expect(onChangeMock).not.toHaveBeenCalled();
   });
 
   it('should decrement value when current value is one step from minValue', () => {
     const numberInput = mount(<NumberInput value="6" minValue={5} onChange={onChangeMock} />);
     const decrementButton = numberInput.find('button').first();
+
     decrementButton.simulate('click');
+
     expect(onChangeMock).toHaveBeenCalledWith('5');
     expect(decrementButton.hasClass('disabled')).toBe(false);
   });
@@ -136,7 +99,9 @@ describe('decrementValue()', () => {
   it('should not decrement value if current value is minValue', () => {
     const numberInput = mount(<NumberInput value="5" minValue={5} onChange={onChangeMock} />);
     const decrementButton = numberInput.find('button').first();
+
     decrementButton.simulate('click');
+
     expect(onChangeMock).not.toHaveBeenCalled();
     expect(decrementButton.hasClass('disabled')).toBe(true);
   });
@@ -144,7 +109,9 @@ describe('decrementValue()', () => {
   it('should not decrement value beyond minValue', () => {
     const numberInput = mount(<NumberInput value="5" minValue={4} stepAmount={2} onChange={onChangeMock} />);
     const decrementButton = numberInput.find('button').first();
+
     decrementButton.simulate('click');
+
     expect(onChangeMock).not.toHaveBeenCalled();
     expect(decrementButton.hasClass('disabled')).toBe(true);
   });
@@ -152,24 +119,28 @@ describe('decrementValue()', () => {
   it('should not decrement empty value', () => {
     const numberInput = mount(<NumberInput allowEmptyValue value="" onChange={onChangeMock} />);
     const decrementButton = numberInput.find('button').first();
+
     decrementButton.simulate('click');
+
     expect(onChangeMock).not.toHaveBeenCalled();
     expect(decrementButton.hasClass('disabled')).toBe(true);
   });
-});
 
-describe('incrementValue()', () => {
   it('should increment value by given stepAmount', () => {
     const numberInput = mount(<NumberInput value="1" stepAmount={2} onChange={onChangeMock} />);
     const incrementButton = numberInput.find('button').last();
+
     incrementButton.simulate('click');
+
     expect(onChangeMock).toHaveBeenCalledWith('3');
   });
 
   it('should increment negative value', () => {
-    const numberInput = mount(<NumberInput value="-2" onChange={onChangeMock} />);
+    const numberInput = mount(<NumberInput minValue={-10} value="-2" onChange={onChangeMock} />);
     const incrementButton = numberInput.find('button').last();
+
     incrementButton.simulate('click');
+
     expect(onChangeMock).toHaveBeenCalledWith('-1');
   });
 
@@ -178,14 +149,18 @@ describe('incrementValue()', () => {
       <NumberInput value={Number.MAX_SAFE_INTEGER.toString()} onChange={onChangeMock} />
     );
     const incrementButton = numberInput.find('button').last();
+
     incrementButton.simulate('click');
+
     expect(onChangeMock).not.toHaveBeenCalled();
   });
 
   it('should increment value when current value is one step from maxValue', () => {
     const numberInput = mount(<NumberInput value="4" maxValue={5} onChange={onChangeMock} />);
     const incrementButton = numberInput.find('button').last();
+
     incrementButton.simulate('click');
+
     expect(onChangeMock).toHaveBeenCalledWith('5');
     expect(incrementButton.hasClass('disabled')).toBe(false);
   });
@@ -193,7 +168,9 @@ describe('incrementValue()', () => {
   it('should not increment value if current value is maxValue', () => {
     const numberInput = mount(<NumberInput value="5" maxValue={5} onChange={onChangeMock} />);
     const incrementButton = numberInput.find('button').last();
+
     incrementButton.simulate('click');
+
     expect(onChangeMock).not.toHaveBeenCalled();
     expect(incrementButton.hasClass('disabled')).toBe(true);
   });
@@ -201,7 +178,9 @@ describe('incrementValue()', () => {
   it('should not increment value beyond given maxValue', () => {
     const numberInput = mount(<NumberInput value="4" maxValue={5} stepAmount={2} onChange={onChangeMock} />);
     const incrementButton = numberInput.find('button').last();
+
     incrementButton.simulate('click');
+
     expect(onChangeMock).not.toHaveBeenCalled();
     expect(incrementButton.hasClass('disabled')).toBe(true);
   });
@@ -209,7 +188,9 @@ describe('incrementValue()', () => {
   it('should not increment empty value', () => {
     const numberInput = mount(<NumberInput allowEmptyValue value="" onChange={onChangeMock} />);
     const incrementButton = numberInput.find('button').last();
+
     incrementButton.simulate('click');
+
     expect(onChangeMock).not.toHaveBeenCalled();
     expect(incrementButton.hasClass('disabled')).toBe(true);
   });
@@ -219,7 +200,9 @@ describe('changeValue()', () => {
   it('should call onChange with new value', () => {
     const numberInput = mount(<NumberInput value="1" onChange={onChangeMock} />);
     const input = numberInput.find('input');
+
     input.simulate('change', { target: { value: '3' } });
+
     expect(onChangeMock).toHaveBeenCalledWith('3');
   });
 
@@ -228,42 +211,54 @@ describe('changeValue()', () => {
       <NumberInput value="1" valueType="decimal" precision={2} onChange={onChangeMock} />
     );
     const input = numberInput.find('input');
+
     input.simulate('change', { target: { value: '3.245' } });
+
     expect(onChangeMock).toHaveBeenCalledWith('3.25');
   });
 
   it('should not allow changing value beyond minValue', () => {
     const numberInput = mount(<NumberInput value="1" minValue={0} onChange={onChangeMock} />);
     const input = numberInput.find('input');
+
     input.simulate('change', { target: { value: '-1' } });
+
     expect(onChangeMock).not.toHaveBeenCalled();
   });
 
   it('should not allow changing value beyond maxValue', () => {
     const numberInput = mount(<NumberInput value="1" maxValue={10} onChange={onChangeMock} />);
     const input = numberInput.find('input');
+
     input.simulate('change', { target: { value: '11' } });
+
     expect(onChangeMock).not.toHaveBeenCalled();
   });
 
   it('should not allow changing value to non-numeric value', () => {
     const numberInput = mount(<NumberInput value="1" onChange={onChangeMock} />);
     const input = numberInput.find('input');
+
     input.simulate('change', { target: { value: 'x' } });
+
     expect(onChangeMock).not.toHaveBeenCalled();
   });
 
   it('should not allow changing value to empty if allowEmptyValue is false', () => {
     const numberInput = mount(<NumberInput allowEmptyValue={false} value="1" onChange={onChangeMock} />);
     const input = numberInput.find('input');
+
     input.simulate('change', { target: { value: '' } });
+
     expect(onChangeMock).not.toHaveBeenCalled();
   });
 
   it('should allow changing value to empty if allowEmptyValue is true', () => {
     const numberInput = mount(<NumberInput allowEmptyValue value="1" onChange={onChangeMock} />);
     const input = numberInput.find('input');
+
     input.simulate('change', { target: { value: '' } });
+
     expect(onChangeMock).toHaveBeenCalledWith('');
   });
 });
@@ -274,14 +269,18 @@ describe('onInputBlur()', () => {
       <NumberInput allowEmptyValue defaultValue={10} value="" onChange={onChangeMock} />
     );
     const input = numberInput.find('input');
+
     input.simulate('blur');
+
     expect(onChangeMock).toHaveBeenCalledWith('10');
   });
 
   it('should not change value if defaultValue is not defined and value is empty', () => {
     const numberInput = mount(<NumberInput allowEmptyValue value="" onChange={onChangeMock} />);
     const input = numberInput.find('input');
+
     input.simulate('blur');
+
     expect(input.props().value).toBe('');
     expect(onChangeMock).not.toHaveBeenCalled();
   });
@@ -289,9 +288,36 @@ describe('onInputBlur()', () => {
   it('should not change value if value is not empty', () => {
     const numberInput = mount(<NumberInput allowEmptyValue value="10" onChange={onChangeMock} />);
     const input = numberInput.find('input');
+
     input.simulate('blur');
+
     expect(input.props().value).toBe('10');
     expect(onChangeMock).not.toHaveBeenCalled();
+  });
+});
+
+describe('onKeyDown()', () => {
+  test.each([
+    ['ArrowUp', false, '11'],
+    ['+', false, '11'],
+    ['ArrowDown', false, '9'],
+    ['-', false, '9'],
+    ['ArrowUp', true, '14'],
+    ['+', true, '14'],
+    ['ArrowDown', true, '6'],
+    ['-', true, '6'],
+    ['PageUp', false, '14'],
+    ['PageDown', false, '6']
+  ])('it should increment/decrement value when key is pressed', (key, ctrlKey, newValue) => {
+    const numberInput = mount(
+      <NumberInput allowEmptyValue doubleClickStepAmount={4} value="10" onChange={onChangeMock} />
+    );
+    const input = numberInput.find('input');
+
+    input.simulate('focus');
+    input.simulate('keydown', { key, ctrlKey });
+
+    expect(onChangeMock).toHaveBeenCalledWith(newValue);
   });
 });
 
@@ -314,6 +340,7 @@ describe('render()', () => {
         value="1"
       />
     );
+
     expect(numberInput).toMatchSnapshot();
   });
 
@@ -329,11 +356,29 @@ describe('render()', () => {
         value="1"
       />
     );
+
+    expect(numberInput).toMatchSnapshot();
+  });
+
+  it('should render component correctly with button tooltips when doubleClickStepAmount is greater than zero', () => {
+    const numberInput = renderShallow(
+      <NumberInput doubleClickStepAmount={2} onChange={onChangeMock} value="1" />
+    );
+
+    expect(numberInput).toMatchSnapshot();
+  });
+
+  it('should render component correctly without button tooltips when showTooltips is false', () => {
+    const numberInput = renderShallow(
+      <NumberInput doubleClickStepAmount={2} onChange={onChangeMock} showTooltips={false} value="1" />
+    );
+
     expect(numberInput).toMatchSnapshot();
   });
 
   it('should render component correctly when showError is true', () => {
     const numberInput = renderShallow(<NumberInput onChange={onChangeMock} showError value="1" />);
+
     expect(numberInput).toMatchSnapshot();
   });
 });

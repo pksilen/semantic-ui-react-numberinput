@@ -94,6 +94,7 @@ export default class NumberInput extends React.Component<Props, {}> {
     const { maxValue, minValue, onChange, precision, value, valueType } = this.props;
     const currentValue = NumberUtils.getParsedValue(value, valueType);
     let newValue = buttonType === 'decrement' ? currentValue - stepAmount : currentValue + stepAmount;
+
     if (newValue < minValue) {
       newValue = minValue;
     } else if (newValue > maxValue) {

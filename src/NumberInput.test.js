@@ -67,10 +67,14 @@ describe('decrementOrIncrementValue()', () => {
   });
 
   it('should decrement negative value', () => {
-    const numberInput = mount(<NumberInput value="-2" minValue={-100} onChange={onChangeMock} />);
+    jest.useFakeTimers();
+    const numberInput = mount(
+      <NumberInput doubleClickStepAmount={4} value="-2" minValue={-100} onChange={onChangeMock} />
+    );
     const decrementButton = numberInput.find('button').first();
 
     decrementButton.simulate('click');
+    jest.advanceTimersByTime(NumberInput.DOUBLE_CLICK_DELAY_IN_MILLIS + 100);
 
     expect(onChangeMock).toHaveBeenCalledWith('-3');
   });
@@ -193,6 +197,26 @@ describe('decrementOrIncrementValue()', () => {
 
     expect(onChangeMock).not.toHaveBeenCalled();
     expect(incrementButton.hasClass('disabled')).toBe(true);
+  });
+
+  it('should not decrement value beyond minValue on double click', () => {
+    const numberInput = mount(<NumberInput doubleClickStepAmount={4} value="2" onChange={onChangeMock} />);
+    const decrementButton = numberInput.find('button').first();
+
+    decrementButton.simulate('click');
+    decrementButton.simulate('click');
+
+    expect(onChangeMock).toHaveBeenCalledWith('0');
+  });
+
+  it('should not increment value beyond maxValue on double click', () => {
+    const numberInput = mount(<NumberInput doubleClickStepAmount={4} value="2" maxValue={3} onChange={onChangeMock} />);
+    const incrementButton = numberInput.find('button').last();
+
+    incrementButton.simulate('click');
+    incrementButton.simulate('click');
+
+    expect(onChangeMock).toHaveBeenCalledWith('3');
   });
 });
 

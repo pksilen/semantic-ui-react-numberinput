@@ -210,7 +210,9 @@ describe('decrementOrIncrementValue()', () => {
   });
 
   it('should not increment value beyond maxValue on double click', () => {
-    const numberInput = mount(<NumberInput doubleClickStepAmount={4} value="2" maxValue={3} onChange={onChangeMock} />);
+    const numberInput = mount(
+      <NumberInput doubleClickStepAmount={4} value="2" maxValue={3} onChange={onChangeMock} />
+    );
     const incrementButton = numberInput.find('button').last();
 
     incrementButton.simulate('click');

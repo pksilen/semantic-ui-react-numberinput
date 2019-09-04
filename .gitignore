@@ -1,13 +1,7 @@
 .idea
-*
-.iml
-
+*.iml
 coverage
-
-node_modules/
-
-lib/
-
+node_modules
+lib
 flow-typed
-
 TODO.txt

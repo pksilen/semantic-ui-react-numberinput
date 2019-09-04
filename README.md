@@ -176,6 +176,6 @@ MIT License
 [build]: https://img.shields.io/circleci/project/github/pksilen/semantic-ui-react-numberinput/master.svg?style=flat-square
 [circleci]: https://circleci.com/gh/pksilen/semantic-ui-react-numberinput/tree/master
 [coverage]: https://img.shields.io/codecov/c/github/pksilen/semantic-ui-react-numberinput/master.svg?style=flat-square
-[codecov]: https://codecov.io/gh/semantic-ui-react-numberinput
+[codecov]: https://codecov.io/gh/pksilen/semantic-ui-react-numberinput
 [demo]: https://pksilen.github.io/semantic-ui-react-numberinput/
 [Semantic UI React]: https://react.semantic-ui.com/

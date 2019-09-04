@@ -161,7 +161,7 @@ export default class NumberInput extends React.Component<Props, {}> {
         handled = true;
         break;
 
-      default:
+      // no default
     }
 
     if (handled) {

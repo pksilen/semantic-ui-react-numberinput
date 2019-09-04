@@ -20,7 +20,7 @@
     "stop-flow": "flow stop",
     "install-flow-types": "flow-typed install",
     "lint": "eslint ./src",
-    "prebuild": "npm run prettier && npm run flow && npm run lint && npm run test",
+    "prebuild": "npm run prettier && npm run flow && npm run lint && npm run test-coverage",
     "prepublishOnly": "npm run build",
     "prettier": "prettier --check \"src/**/*.js\"",
     "test": "jest ./src",

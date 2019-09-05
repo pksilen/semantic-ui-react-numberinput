@@ -4,6 +4,9 @@ Numeric input control with step buttons for [Semantic UI React]
 [![version][version-badge]][package]
 [![build][build]][circleci]
 [![coverage][coverage]][codecov]
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=pksilen_semantic-ui-react-numberinput&metric=alert_status)](https://sonarcloud.io/dashboard?id=pksilen_semantic-ui-react-numberinput)
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=pksilen_semantic-ui-react-numberinput&metric=bugs)](https://sonarcloud.io/dashboard?id=pksilen_semantic-ui-react-numberinput)
+[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=pksilen_semantic-ui-react-numberinput&metric=vulnerabilities)](https://sonarcloud.io/dashboard?id=pksilen_semantic-ui-react-numberinput)
 [![MIT License][license-badge]][license]
 
 ![Example image of numberInput](https://raw.githubusercontent.com/pksilen/semantic-ui-react-numberinput/master/example/number_input_with_border_radius.png)

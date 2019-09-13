@@ -20,7 +20,10 @@ const config = {
   resolve: {
     extensions: ['.webpack.js', '.web.js', '.ts', '.tsx', '.js', 'jsx'],
   },
-  mode: 'development'
+  performance: {
+    hints: false
+  },
+  mode: 'production'
 };
 
 module.exports = config;

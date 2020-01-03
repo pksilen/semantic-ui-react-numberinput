@@ -25,6 +25,7 @@ exports[`render() should render component correctly when buttonPlacement is "lef
         "minHeight": "unset",
       }
     }
+    type="button"
   />
   <div
     className="ui input large"
@@ -60,6 +61,7 @@ exports[`render() should render component correctly when buttonPlacement is "lef
         "minHeight": "unset",
       }
     }
+    type="button"
   />
 </div>
 `;
@@ -120,6 +122,7 @@ exports[`render() should render component correctly when buttonPlacement is "rig
           "padding": "0 0.2em",
         }
       }
+      type="button"
     />
     <Button
       as="button"
@@ -139,6 +142,7 @@ exports[`render() should render component correctly when buttonPlacement is "rig
           "padding": "0 0.2em",
         }
       }
+      type="button"
     />
   </div>
 </div>
@@ -167,6 +171,7 @@ exports[`render() should render component correctly when showError is true 1`] =
         "minHeight": "unset",
       }
     }
+    type="button"
   />
   <div
     className="ui input small error"
@@ -202,6 +207,7 @@ exports[`render() should render component correctly when showError is true 1`] =
         "minHeight": "unset",
       }
     }
+    type="button"
   />
 </div>
 `;
@@ -239,6 +245,7 @@ exports[`render() should render component correctly with button tooltips when do
             "minHeight": "unset",
           }
         }
+        type="button"
       />
     }
   />
@@ -286,6 +293,7 @@ exports[`render() should render component correctly with button tooltips when do
             "minHeight": "unset",
           }
         }
+        type="button"
       />
     }
   />
@@ -315,6 +323,7 @@ exports[`render() should render component correctly without button tooltips when
         "minHeight": "unset",
       }
     }
+    type="button"
   />
   <div
     className="ui input small"
@@ -350,6 +359,7 @@ exports[`render() should render component correctly without button tooltips when
         "minHeight": "unset",
       }
     }
+    type="button"
   />
 </div>
 `;

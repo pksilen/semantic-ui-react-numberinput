@@ -23,7 +23,12 @@ const config = {
   performance: {
     hints: false
   },
-  mode: 'production'
+  mode: 'production',
+  devServer: {
+    contentBase: path.resolve(__dirname, 'demo'),
+    compress: false,
+    port: 3000
+  }
 };
 
 module.exports = config;

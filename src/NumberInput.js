@@ -204,6 +204,7 @@ export default class NumberInput extends React.Component<Props, {}> {
       <Button
         size={size}
         style={buttonStyle}
+        type="button"
         icon={ButtonUtils.getButtonIconName(buttonType, buttonPlacement)}
         onClick={() => this.decrementOrIncrementValue(buttonType)}
         disabled={ButtonUtils.isDisabledButton(buttonType, this.props)}

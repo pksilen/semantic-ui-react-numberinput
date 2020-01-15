@@ -24,7 +24,8 @@
     "prepublishOnly": "npm run build",
     "prettier": "prettier --check \"src/**/*.js\"",
     "test": "jest ./src",
-    "test-coverage": "jest ./src --coverage"
+    "test-coverage": "jest ./src --coverage",
+    "webpack-dev-server": "webpack-dev-server"
   },
   "repository": {
     "type": "git",
@@ -65,7 +66,8 @@
     "react-dom": "^16.9.0",
     "semantic-ui-react": "^0.87.3",
     "webpack": "^4.39.3",
-    "webpack-cli": "^3.3.7"
+    "webpack-cli": "^3.3.7",
+    "webpack-dev-server": "^3.10.1"
   },
   "dependencies": {
     "lodash": "^4.17.15",

@@ -113,7 +113,7 @@ export default class NumberInput extends React.Component<Props, {}> {
     const newValue = NumberUtils.getParsedValue(value, valueType);
 
     if (Validators.isValidValue(newValue, valueType) && newValue >= minValue && newValue <= maxValue) {
-      onChange(NumberUtils.getValueWithPrecisionAsString(newValue, valueType, precision));
+      onChange(NumberUtils.getValueWithPrecisionAsString(newValue, valueType, precision, value));
     } else if (allowEmptyValue && !value) {
       onChange('');
     }

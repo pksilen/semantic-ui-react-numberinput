@@ -1,6 +1,6 @@
 import NumberUtils from './NumberUtils';
 
-describe('getParsedValue(value: string, valueType: ValueType): number', () => {
+describe('getParsedValue', () => {
   it('should successfully parse integer value if valueType is "integer"', () => {
     const parsedValue = NumberUtils.getParsedValue('10', 'integer');
 
@@ -32,17 +32,24 @@ describe('getParsedValue(value: string, valueType: ValueType): number', () => {
   });
 });
 
-describe('getValueWithPrecisionAsString(value: number, valueType: ValueType, precision: number): string', () => {
+describe('getValueWithPrecisionAsString', () => {
   it('should return value as string if valueType is "integer"', () => {
     const valueAsString = NumberUtils.getValueWithPrecisionAsString(10, 'integer', 2);
 
     expect(valueAsString).toBe('10');
   });
 
-  test.each([[1.2543, 2, '1.25'], [1.25, 1, '1.3'], [1.0, 5, '1'], [0.3333333, 3, '0.333']])(
+  test.each([
+    [1.2543, '1.2543', 2, '1.25'],
+    [1.25, '1.25', 1, '1.3'],
+    [1.0, '1.0', 5, '1'],
+    [0.3333333, '0.3333333', 3, '0.333'],
+    [2, '2.', 2, '2.'],
+    [0, '0.', 1, '0.']
+  ])(
     'it should return decimal value with precision as string if valueType is "decimal"',
-    (value, precision, expectedValue) => {
-      const valueAsString = NumberUtils.getValueWithPrecisionAsString(value, 'decimal', precision);
+    (value, valueStr, precision, expectedValue) => {
+      const valueAsString = NumberUtils.getValueWithPrecisionAsString(value, 'decimal', precision, valueStr);
 
       expect(valueAsString).toBe(expectedValue);
     }

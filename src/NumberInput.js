@@ -36,6 +36,7 @@ export default class NumberInput extends React.Component<Props, {}> {
     buttonPlacement: PropTypes.oneOf(['right', 'leftAndRight']),
     className: PropTypes.string,
     defaultValue: PropTypes.number,
+    disabled: PropTypes.bool,
     doubleClickStepAmount: PropTypes.number,
     id: PropTypes.string,
     minValue: PropTypes.number,
@@ -56,6 +57,7 @@ export default class NumberInput extends React.Component<Props, {}> {
     buttonPlacement: 'leftAndRight',
     className: undefined,
     defaultValue: undefined,
+    disabled: false,
     doubleClickStepAmount: 0,
     id: undefined,
     minValue: 0,
@@ -171,14 +173,14 @@ export default class NumberInput extends React.Component<Props, {}> {
   };
 
   getInputComponent = (): Element<*> => {
-    const { buttonPlacement, maxLength, placeholder, showError, size, value } = this.props;
+    const { buttonPlacement, disabled, maxLength, placeholder, showError, size, value } = this.props;
     const inputStyle = {
       ...style.common.input,
       ...style[buttonPlacement].input
     };
 
     return (
-      <div className={`ui input ${size}${showError ? ' error' : ''}`}>
+      <div className={`ui input ${size}${showError ? ' error' : ''}${disabled ? ' disabled' : ''}`}>
         <input
           type="text"
           style={inputStyle}
@@ -194,7 +196,7 @@ export default class NumberInput extends React.Component<Props, {}> {
   };
 
   getButtonComponent = (buttonType: ButtonType): Element<*> => {
-    const { buttonPlacement, doubleClickStepAmount, showTooltips, size } = this.props;
+    const { buttonPlacement, doubleClickStepAmount, disabled, showTooltips, size } = this.props;
     const buttonStyle = {
       ...style[buttonPlacement].button.base,
       ...style[buttonPlacement].button[buttonType]
@@ -207,7 +209,7 @@ export default class NumberInput extends React.Component<Props, {}> {
         type="button"
         icon={ButtonUtils.getButtonIconName(buttonType, buttonPlacement)}
         onClick={() => this.decrementOrIncrementValue(buttonType)}
-        disabled={ButtonUtils.isDisabledButton(buttonType, this.props)}
+        disabled={disabled || ButtonUtils.isDisabledButton(buttonType, this.props)}
       />
     );
 

@@ -407,4 +407,10 @@ describe('render()', () => {
 
     expect(numberInput).toMatchSnapshot();
   });
+
+  it('should render component correctly when it is disabled', () => {
+    const numberInput = renderShallow(<NumberInput onChange={onChangeMock} disabled value="1" />);
+
+    expect(numberInput).toMatchSnapshot();
+  });
 });

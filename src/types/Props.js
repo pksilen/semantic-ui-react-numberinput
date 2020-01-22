@@ -13,6 +13,7 @@ export type OptionalProps = {
   buttonPlacement: ButtonPlacement,
   className: ?string,
   defaultValue: ?number,
+  disabled: boolean,
   doubleClickStepAmount: number,
   id: ?string,
   minValue: number,

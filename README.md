@@ -84,6 +84,7 @@ More examples in demo/demo.js file
 | id                   | id for HTML outer div element                                                                                                  |
 | className            | class name(s) for HTML outer div element                                                                                       |
 | defaultValue         | Specifies default value to be used when value is empty (must be integer or decimal number depending on valueType)              |
+| disabled             | Specifies if NumberInput is disabled
 | doubleClickStepAmount| Specifies how much double click of a button increments/decrements the value, zero value disables double click feature          |
 | minValue             | Minimum value accepted for NumberInput (must be integer or decimal number depending on valueType)                              |                                                                           |
 | maxValue             | Maximum value accepted for NumberInput (must be integer or decimal number depending on valueType)                              |
@@ -103,6 +104,7 @@ More examples in demo/demo.js file
     id: string,
     className: string,
     defaultValue: number,
+    disabled: boolean,
     doubleClickStepAmount: number,
     minValue: number, 
     maxValue: number,   
@@ -121,6 +123,7 @@ More examples in demo/demo.js file
     id: undefined,
     className: undefined,
     defaultValue: undefined,
+    disabled: false,
     doubleClickStepAmount: 0,
     minValue: 0,
     maxValue: 9999999999,

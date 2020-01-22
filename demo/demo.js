@@ -67,6 +67,16 @@ class DemoApp extends React.Component<{}, State> {
           onChange={(newValue: string) => this.changeNumberInputValue(newValue, 3)}
         />
         <br />
+        NumberInput (disabled)
+        <NumberInput
+          disabled
+          buttonPlacement="right"
+          valueType="decimal"
+          stepAmount={0.25}
+          value={numberInputValues[3]}
+          onChange={(newValue: string) => this.changeNumberInputValue(newValue, 3)}
+        />
+        <br />
         NumberInput
         (buttonPlacement=&quot;right&quot;,&nbsp;allowEmptyValue=true,&nbsp;showError=true,&nbsp;value=&quot;&quot;)
         <NumberInput

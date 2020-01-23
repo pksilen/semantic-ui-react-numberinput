@@ -235,20 +235,24 @@ export default class NumberInput extends React.Component<Props, {}> {
 
     if (buttonPlacement === 'leftAndRight') {
       return (
-        <div id={id} className={className} style={style.leftAndRight.outerDiv}>
-          {this.getButtonComponent('decrement')}
-          {this.getInputComponent()}
-          {this.getButtonComponent('increment')}
+        <div id={id} className={className}>
+          <div style={style.leftAndRight.outerDiv}>
+            {this.getButtonComponent('decrement')}
+            {this.getInputComponent()}
+            {this.getButtonComponent('increment')}
+          </div>
         </div>
       );
     }
 
     return (
-      <div id={id} className={className} style={style.right.outerDiv}>
-        {this.getInputComponent()}
-        <div style={style.right.button.div}>
-          {this.getButtonComponent('increment')}
-          {this.getButtonComponent('decrement')}
+      <div id={id} className={className}>
+        <div style={style.right.outerDiv}>
+          {this.getInputComponent()}
+          <div style={style.right.button.div}>
+            {this.getButtonComponent('increment')}
+            {this.getButtonComponent('decrement')}
+          </div>
         </div>
       </div>
     );

@@ -12,7 +12,7 @@ type State = {
 
 class DemoApp extends React.Component<{}, State> {
   state = {
-    numberInputValues: ['0', '0', '0', '0', '', '10', '0', '0', '0', '0', '0', '0', '0']
+    numberInputValues: ['0', '0', '0', '0', '', '10', '0', '0', '0', '0', '0', '0', '0', '0', '0']
   };
 
   changeNumberInputValue = (newValue: string, numberInputComponentIndex: number) => {
@@ -104,47 +104,59 @@ class DemoApp extends React.Component<{}, State> {
           value={numberInputValues[6]}
           onChange={(newValue: string) => this.changeNumberInputValue(newValue, 6)}
         />
+        <br />
+        NumberInputs className=&quot;inline&quot;
+        <NumberInput
+          className="inline"
+          value={numberInputValues[7]}
+          onChange={(newValue: string) => this.changeNumberInputValue(newValue, 7)}
+        />
+        <NumberInput
+          className="inline"
+          value={numberInputValues[8]}
+          onChange={(newValue: string) => this.changeNumberInputValue(newValue, 8)}
+        />
         <h2>NumberInput sizes</h2>
         Mini
         <NumberInput
           size="mini"
-          value={numberInputValues[7]}
-          onChange={(newValue: string) => this.changeNumberInputValue(newValue, 7)}
+          value={numberInputValues[9]}
+          onChange={(newValue: string) => this.changeNumberInputValue(newValue, 9)}
         />
         <br />
         Small
         <NumberInput
           size="small"
-          value={numberInputValues[8]}
-          onChange={(newValue: string) => this.changeNumberInputValue(newValue, 8)}
+          value={numberInputValues[10]}
+          onChange={(newValue: string) => this.changeNumberInputValue(newValue, 10)}
         />
         <br />
         Large
         <NumberInput
           size="large"
-          value={numberInputValues[9]}
-          onChange={(newValue: string) => this.changeNumberInputValue(newValue, 9)}
+          value={numberInputValues[11]}
+          onChange={(newValue: string) => this.changeNumberInputValue(newValue, 11)}
         />
         <br />
         Big
         <NumberInput
           size="big"
-          value={numberInputValues[10]}
-          onChange={(newValue: string) => this.changeNumberInputValue(newValue, 10)}
+          value={numberInputValues[12]}
+          onChange={(newValue: string) => this.changeNumberInputValue(newValue, 12)}
         />
         <br />
         Huge
         <NumberInput
           size="huge"
-          value={numberInputValues[11]}
-          onChange={(newValue: string) => this.changeNumberInputValue(newValue, 11)}
+          value={numberInputValues[13]}
+          onChange={(newValue: string) => this.changeNumberInputValue(newValue, 13)}
         />
         <br />
         Massive
         <NumberInput
           size="massive"
-          value={numberInputValues[12]}
-          onChange={(newValue: string) => this.changeNumberInputValue(newValue, 12)}
+          value={numberInputValues[14]}
+          onChange={(newValue: string) => this.changeNumberInputValue(newValue, 14)}
         />
         <p>
           <br />

@@ -177,6 +177,14 @@ More examples in demo/demo.js file
 ## License
 MIT License
 
+## My other Semantic UI React components
+
+* [Scrollbar](https://github.com/pksilen/semantic-ui-react-scrollbar)
+* [Date Time Input](https://github.com/pksilen/semantic-ui-react-datetimeinput)
+* [Slider](https://github.com/pksilen/semantic-ui-react-slider)
+* [Text Input with integrated label](https://github.com/pksilen/semantic-ui-react-labeledinput)
+* [Line style Text Input](https://github.com/pksilen/semantic-ui-react-lineinput)
+
 [license-badge]: https://img.shields.io/badge/license-MIT-green
 [license]: https://github.com/pksilen/semantic-ui-react-numberinput/blob/master/LICENSE
 [version-badge]: https://img.shields.io/npm/v/semantic-ui-react-numberinput.svg?style=flat-square

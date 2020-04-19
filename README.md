@@ -80,6 +80,7 @@ More examples in demo/demo.js file
 | property             | description                                                                                                                    |
 | -------------------- | -------------------------------------------------------------------------------------------------------------------------------|
 | allowEmptyValue      | Specifies if value can be empty                                                                                                |    
+| allowMouseWheel      | Specifies if mouse wheel can used to change input value                                                                        |
 | buttonPlacement      | Specifies how step buttons are placed                                                                                          |
 | id                   | id for HTML outer div element                                                                                                  |
 | className            | class name(s) for HTML outer div element                                                                                       |
@@ -100,6 +101,7 @@ More examples in demo/demo.js file
     
 ## Optional NumberInput property types
     allowEmptyValue: boolean,
+    allowMouseWheel: boolean,
     buttonPlacement: 'right' | 'leftAndRight'  
     id: string,
     className: string,
@@ -119,6 +121,7 @@ More examples in demo/demo.js file
         
 ## Default values for optional properties
     allowEmptyValue: false,
+    allowMouseWheel: false,
     buttonPlacement: 'leftAndRight',
     id: undefined,
     className: undefined,

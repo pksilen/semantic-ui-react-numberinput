@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { ActiveListener } from 'react-event-injector';
 import { mount, shallow as renderShallow } from 'enzyme';
 import NumberInput from './NumberInput';
 
@@ -344,6 +345,30 @@ describe('onKeyDown()', () => {
     input.simulate('keydown', { key, ctrlKey });
 
     expect(onChangeMock).toHaveBeenCalledWith(newValue);
+  });
+});
+
+describe('onWheel()', () => {
+  it('should increment value when wheel is rotated upwards', () => {
+    const numberInput = mount(
+      <NumberInput allowMouseWheel doubleClickStepAmount={4} value="10" onChange={onChangeMock} />
+    );
+    const activeListener = numberInput.find(ActiveListener);
+
+    activeListener.props().onWheel({ deltaY: 1, preventDefault: jest.fn() });
+
+    expect(onChangeMock).toHaveBeenCalledWith('11');
+  });
+
+  it('should decrement value when wheel is rotated downwards', () => {
+    const numberInput = mount(
+      <NumberInput allowMouseWheel doubleClickStepAmount={4} value="10" onChange={onChangeMock} />
+    );
+    const activeListener = numberInput.find(ActiveListener);
+
+    activeListener.props().onWheel({ deltaY: -2, preventDefault: jest.fn() });
+
+    expect(onChangeMock).toHaveBeenCalledWith('8');
   });
 });
 

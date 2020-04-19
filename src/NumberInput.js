@@ -1,8 +1,9 @@
 // @flow
 
-import React from 'react';
 import type { Element } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
+import { ActiveListener } from 'react-event-injector';
 // $FlowFixMe
 import _ from 'lodash';
 import { Button, Popup } from 'semantic-ui-react';
@@ -11,7 +12,7 @@ import PropValidators from './validators/PropValidators';
 // $FlowFixMe
 import Validators from './validators/Validators';
 // $FlowFixMe
-import type { ButtonType, Props } from './types/Types';
+import type { ButtonType } from './types/Types';
 // $FlowFixMe
 import style from './style';
 // $FlowFixMe
@@ -19,7 +20,7 @@ import NumberUtils from './utils/NumberUtils';
 // $FlowFixMe
 import ButtonUtils from './utils/ButtonUtils';
 // $FlowFixMe
-import type { OptionalProps } from './types/Props';
+import type { Props } from './types/Props';
 
 // noinspection JSUnusedGlobalSymbols
 export default class NumberInput extends React.Component<Props, {}> {
@@ -33,6 +34,7 @@ export default class NumberInput extends React.Component<Props, {}> {
     value: PropTypes.string.isRequired,
     onChange: PropTypes.func.isRequired,
     allowEmptyValue: PropTypes.bool,
+    allowMouseWheel: PropTypes.bool,
     buttonPlacement: PropTypes.oneOf(['right', 'leftAndRight']),
     className: PropTypes.string,
     defaultValue: PropTypes.number,
@@ -52,8 +54,9 @@ export default class NumberInput extends React.Component<Props, {}> {
   };
 
   // noinspection MagicNumberJS
-  static defaultProps: OptionalProps = {
+  static defaultProps = {
     allowEmptyValue: false,
+    allowMouseWheel: false,
     buttonPlacement: 'leftAndRight',
     className: undefined,
     defaultValue: undefined,
@@ -124,7 +127,7 @@ export default class NumberInput extends React.Component<Props, {}> {
   onInputBlur = () => {
     const { defaultValue, onChange, precision, value, valueType } = this.props;
 
-    if (defaultValue !== undefined && !value) {
+    if (defaultValue !== undefined && defaultValue !== null && !value) {
       onChange(NumberUtils.getValueWithPrecisionAsString(defaultValue, valueType, precision));
     }
   };
@@ -172,6 +175,15 @@ export default class NumberInput extends React.Component<Props, {}> {
     }
   };
 
+  onWheel = (event: SyntheticWheelEvent<HTMLInputElement>) => {
+    const { allowMouseWheel } = this.props;
+
+    if (allowMouseWheel) {
+      event.preventDefault();
+      this.decrementOrIncrementValueByStepAmount('increment', event.deltaY);
+    }
+  };
+
   getInputComponent = (): Element<*> => {
     const { buttonPlacement, disabled, maxLength, placeholder, showError, size, value } = this.props;
     const inputStyle = {
@@ -181,16 +193,18 @@ export default class NumberInput extends React.Component<Props, {}> {
 
     return (
       <div className={`ui input ${size}${showError ? ' error' : ''}${disabled ? ' disabled' : ''}`}>
-        <input
-          type="text"
-          style={inputStyle}
-          maxLength={maxLength}
-          placeholder={placeholder}
-          value={value}
-          onChange={this.changeValue}
-          onBlur={this.onInputBlur}
-          onKeyDown={this.onKeyDown}
-        />
+        <ActiveListener onWheel={this.onWheel}>
+          <input
+            type="text"
+            style={inputStyle}
+            maxLength={maxLength}
+            placeholder={placeholder}
+            value={value}
+            onChange={this.changeValue}
+            onBlur={this.onInputBlur}
+            onKeyDown={this.onKeyDown}
+          />
+        </ActiveListener>
       </div>
     );
   };

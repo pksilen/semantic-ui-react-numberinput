@@ -33,8 +33,9 @@ class DemoApp extends React.Component<{}, State> {
     return (
       <div style={{ marginLeft: '5px' }}>
         <h1>NumberInput Demo</h1>
-        Default NumberInput (buttonPlacement=&quot;leftAndRight&quot;)
+        Default NumberInput (buttonPlacement=&quot;leftAndRight&quot;,&nbsp;allowMouseWheel=true)
         <NumberInput
+          allowMouseWheel
           value={numberInputValues[0]}
           onChange={(newValue: string) => this.changeNumberInputValue(newValue, 0)}
         />

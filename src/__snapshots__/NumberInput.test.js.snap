@@ -32,21 +32,25 @@ exports[`render() should render component correctly when buttonPlacement is "lef
     <div
       className="ui input large"
     >
-      <input
-        maxLength={10}
-        onBlur={[Function]}
-        onChange={[Function]}
-        onKeyDown={[Function]}
-        placeholder="testPlaceholder"
-        style={
-          Object {
-            "borderRadius": 0,
-            "textAlign": "right",
+      <ActiveListener
+        onWheel={[Function]}
+      >
+        <input
+          maxLength={10}
+          onBlur={[Function]}
+          onChange={[Function]}
+          onKeyDown={[Function]}
+          placeholder="testPlaceholder"
+          style={
+            Object {
+              "borderRadius": 0,
+              "textAlign": "right",
+            }
           }
-        }
-        type="text"
-        value="1"
-      />
+          type="text"
+          value="1"
+        />
+      </ActiveListener>
     </div>
     <Button
       as="button"
@@ -84,22 +88,26 @@ exports[`render() should render component correctly when buttonPlacement is "rig
     <div
       className="ui input large"
     >
-      <input
-        maxLength={10}
-        onBlur={[Function]}
-        onChange={[Function]}
-        onKeyDown={[Function]}
-        placeholder="testPlaceholder"
-        style={
-          Object {
-            "borderBottomRightRadius": 0,
-            "borderTopRightRadius": 0,
-            "textAlign": "right",
+      <ActiveListener
+        onWheel={[Function]}
+      >
+        <input
+          maxLength={10}
+          onBlur={[Function]}
+          onChange={[Function]}
+          onKeyDown={[Function]}
+          placeholder="testPlaceholder"
+          style={
+            Object {
+              "borderBottomRightRadius": 0,
+              "borderTopRightRadius": 0,
+              "textAlign": "right",
+            }
           }
-        }
-        type="text"
-        value="1"
-      />
+          type="text"
+          value="1"
+        />
+      </ActiveListener>
     </div>
     <div
       style={
@@ -183,21 +191,25 @@ exports[`render() should render component correctly when it is disabled 1`] = `
     <div
       className="ui input small disabled"
     >
-      <input
-        maxLength={10}
-        onBlur={[Function]}
-        onChange={[Function]}
-        onKeyDown={[Function]}
-        placeholder="Enter a value"
-        style={
-          Object {
-            "borderRadius": 0,
-            "textAlign": "right",
+      <ActiveListener
+        onWheel={[Function]}
+      >
+        <input
+          maxLength={10}
+          onBlur={[Function]}
+          onChange={[Function]}
+          onKeyDown={[Function]}
+          placeholder="Enter a value"
+          style={
+            Object {
+              "borderRadius": 0,
+              "textAlign": "right",
+            }
           }
-        }
-        type="text"
-        value="1"
-      />
+          type="text"
+          value="1"
+        />
+      </ActiveListener>
     </div>
     <Button
       as="button"
@@ -249,21 +261,25 @@ exports[`render() should render component correctly when showError is true 1`] =
     <div
       className="ui input small error"
     >
-      <input
-        maxLength={10}
-        onBlur={[Function]}
-        onChange={[Function]}
-        onKeyDown={[Function]}
-        placeholder="Enter a value"
-        style={
-          Object {
-            "borderRadius": 0,
-            "textAlign": "right",
+      <ActiveListener
+        onWheel={[Function]}
+      >
+        <input
+          maxLength={10}
+          onBlur={[Function]}
+          onChange={[Function]}
+          onKeyDown={[Function]}
+          placeholder="Enter a value"
+          style={
+            Object {
+              "borderRadius": 0,
+              "textAlign": "right",
+            }
           }
-        }
-        type="text"
-        value="1"
-      />
+          type="text"
+          value="1"
+        />
+      </ActiveListener>
     </div>
     <Button
       as="button"
@@ -327,21 +343,25 @@ exports[`render() should render component correctly with button tooltips when do
     <div
       className="ui input small"
     >
-      <input
-        maxLength={10}
-        onBlur={[Function]}
-        onChange={[Function]}
-        onKeyDown={[Function]}
-        placeholder="Enter a value"
-        style={
-          Object {
-            "borderRadius": 0,
-            "textAlign": "right",
+      <ActiveListener
+        onWheel={[Function]}
+      >
+        <input
+          maxLength={10}
+          onBlur={[Function]}
+          onChange={[Function]}
+          onKeyDown={[Function]}
+          placeholder="Enter a value"
+          style={
+            Object {
+              "borderRadius": 0,
+              "textAlign": "right",
+            }
           }
-        }
-        type="text"
-        value="1"
-      />
+          type="text"
+          value="1"
+        />
+      </ActiveListener>
     </div>
     <Popup
       content="Double-click to increment by 2"
@@ -405,21 +425,25 @@ exports[`render() should render component correctly without button tooltips when
     <div
       className="ui input small"
     >
-      <input
-        maxLength={10}
-        onBlur={[Function]}
-        onChange={[Function]}
-        onKeyDown={[Function]}
-        placeholder="Enter a value"
-        style={
-          Object {
-            "borderRadius": 0,
-            "textAlign": "right",
+      <ActiveListener
+        onWheel={[Function]}
+      >
+        <input
+          maxLength={10}
+          onBlur={[Function]}
+          onChange={[Function]}
+          onKeyDown={[Function]}
+          placeholder="Enter a value"
+          style={
+            Object {
+              "borderRadius": 0,
+              "textAlign": "right",
+            }
           }
-        }
-        type="text"
-        value="1"
-      />
+          type="text"
+          value="1"
+        />
+      </ActiveListener>
     </div>
     <Button
       as="button"

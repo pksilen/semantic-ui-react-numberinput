@@ -3,13 +3,11 @@
 // $FlowFixMe
 import type { ButtonPlacement, ValueType } from './Types';
 
-export type MandatoryProps = {
+export type Props = {
   value: string,
-  onChange: (newValue: string) => void
-};
-
-export type OptionalProps = {
+  onChange: (newValue: string) => void,
   allowEmptyValue: boolean,
+  allowMouseWheel: boolean,
   buttonPlacement: ButtonPlacement,
   className: ?string,
   defaultValue: ?number,
@@ -27,5 +25,3 @@ export type OptionalProps = {
   stepAmount: number,
   valueType: ValueType
 };
-
-export type Props = MandatoryProps | OptionalProps;

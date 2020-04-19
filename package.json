@@ -71,7 +71,8 @@
   },
   "dependencies": {
     "lodash": "^4.17.15",
-    "prop-types": "^15.7.2"
+    "prop-types": "^15.7.2",
+    "react-event-injector": "^1.1.2"
   },
   "jest": {
     "setupFilesAfterEnv": [

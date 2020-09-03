@@ -102,7 +102,7 @@ More examples in demo/demo.js file
 ## Optional NumberInput property types
     allowEmptyValue: boolean,
     allowMouseWheel: boolean,
-    buttonPlacement: 'right' | 'leftAndRight'  
+    buttonPlacement: 'right' | 'leftAndRight' | 'none'  
     id: string,
     className: string,
     defaultValue: number,

@@ -60,6 +60,14 @@ const style = {
         borderTopRightRadius: 0
       }
     }
+  },
+  none: {
+    outerDiv: {
+      display: 'flex'
+    },
+    button: {
+      display: none
+    }
   }
 };
 

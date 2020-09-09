@@ -66,7 +66,7 @@ const style = {
       display: 'flex'
     },
     button: {
-      display: none
+      display: 'none'
     }
   }
 };

@@ -114,24 +114,26 @@ More examples in demo/demo.js file
 
     
 ## Optional NumberInput property types
-    allowEmptyValue: boolean,
-    allowMouseWheel: boolean,
-    buttonPlacement: 'right' | 'leftAndRight' | 'none'  
-    id: string,
-    className: string,
-    defaultValue: number,
-    disabled: boolean,
-    doubleClickStepAmount: number,
-    minValue: number, 
-    maxValue: number,   
-    maxLength: number,
-    placeholder: string,
-    precision: number,
-    showError: boolean,
-    showTooltips: boolean,
-    size: 'mini' | 'small' | 'large' | 'big' | 'huge' | 'massive',
-    stepAmount: number,
-    valueType: 'integer' | 'decimal'
+```ts
+allowEmptyValue: boolean,
+allowMouseWheel: boolean,
+buttonPlacement: 'right' | 'leftAndRight' | 'none',  
+id: string,
+className: string,
+defaultValue: number,
+disabled: boolean,
+doubleClickStepAmount: number,
+minValue: number, 
+maxValue: number,   
+maxLength: number,
+placeholder: string,
+precision: number,
+showError: boolean,
+showTooltips: boolean,
+size: 'mini' | 'small' | 'large' | 'big' | 'huge' | 'massive',
+stepAmount: number,
+valueType: 'integer' | 'decimal'
+```
         
 ## Default values for optional properties
 ```js

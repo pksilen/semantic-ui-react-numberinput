@@ -84,7 +84,7 @@ Specify decimal NumberInput with increment/decrement step of 0.1 and precision o
 <NumberInput valueType="decimal" stepAmount={0.1} precision={1} value={this.state.value} onChange={this.changeValue} />
 ```
 
-More examples in `demo/demo.js file
+More examples in `demo/demo.js` file
 
 ## Mandatory NumberInput properties      
     value: string, // must be parseable to integer or decimal number depending on valueType

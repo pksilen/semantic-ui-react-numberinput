@@ -114,7 +114,7 @@ More examples in demo/demo.js file
 
     
 ## Optional NumberInput property types
-```flow
+```ts
 allowEmptyValue: boolean,
 allowMouseWheel: boolean,
 buttonPlacement: 'right' | 'leftAndRight' | 'none',  

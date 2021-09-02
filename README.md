@@ -25,28 +25,28 @@ Numeric input control with step buttons for [Semantic UI React]
    NumberInput [demo] 
     
 ## Example usage
-    ```js
-    import React from 'react';
-    import NumberInput from 'semantic-ui-react-numberinput';
-    
-    class NumberInputExample extends React.Component {
+```js
+import React from 'react';
+import NumberInput from 'semantic-ui-react-numberinput';
 
-        constructor(props) {
-            super(props);
-            this.state = {
-                value: '0'
-            };
-        }
-        
-        changeValue = (newValue) => {
-            this.setState({ value: newValue });
-        }
-       
-        render() => {(
-            <NumberInput value={this.state.value} onChange={this.changeValue} />
-        )};
+class NumberInputExample extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            value: '0'
+        };
     }
-    ```
+
+    changeValue = (newValue) => {
+        this.setState({ value: newValue });
+    }
+
+    render() => {(
+        <NumberInput value={this.state.value} onChange={this.changeValue} />
+    )};
+}
+```
     
    Render NumberInput with step buttons on left and right side of the input (this is default behavior, if buttonPlacement is not specified)
              

@@ -49,8 +49,10 @@ class NumberInputExample extends React.Component {
 ```
     
    Render NumberInput with step buttons on left and right side of the input (this is default behavior, if buttonPlacement is not specified)
-             
-    <NumberInput buttonPlacement="leftAndRight" value={this.state.value} onChange={this.changeValue} />
+     
+```js
+<NumberInput buttonPlacement="leftAndRight" value={this.state.value} onChange={this.changeValue} />
+```
          
    Render NumberInput with step buttons on the right side of the input
                       

@@ -3,6 +3,7 @@ Numeric input control with step buttons for [Semantic UI React]
 
 [![version][version-badge]][package]
 [![build][build]][circleci]
+[![Downloads][downloads]][package]
 [![coverage][coverage]][codecov]
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=pksilen_semantic-ui-react-numberinput&metric=alert_status)](https://sonarcloud.io/dashboard?id=pksilen_semantic-ui-react-numberinput)
 [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=pksilen_semantic-ui-react-numberinput&metric=bugs)](https://sonarcloud.io/dashboard?id=pksilen_semantic-ui-react-numberinput)
@@ -25,7 +26,7 @@ Numeric input control with step buttons for [Semantic UI React]
    NumberInput [demo] 
     
 ## Example usage
-```js
+```jsx
 import React from 'react';
 import NumberInput from 'semantic-ui-react-numberinput';
 
@@ -50,37 +51,37 @@ class NumberInputExample extends React.Component {
     
 Render NumberInput with step buttons on left and right side of the input (this is default behavior, if buttonPlacement is not specified)
      
-```js
+```jsx
 <NumberInput buttonPlacement="leftAndRight" value={this.state.value} onChange={this.changeValue} />
 ```
          
 Render NumberInput with step buttons on the right side of the input
 
-```js
+```jsx
 <NumberInput buttonPlacement="right" value={this.state.value} onChange={this.changeValue} />
 ```
     
 Specify allowed number range to be between 0 and 100
          
-```js
+```jsx
 <NumberInput minValue={0} maxValue={100} value={this.state.value} onChange={this.changeValue} />
 ```
          
 Specify buttons to increment/decrement by 5 
 
-```js
+```jsx
 <NumberInput stepAmount={5} value={this.state.value} onChange={this.changeValue} />
 ```
          
 Specify decimal NumberInput with increment/decrement step of 0.25 and default precision of 2 
 
-```js
+```jsx
 <NumberInput valueType="decimal" stepAmount={0.25} value={this.state.value} onChange={this.changeValue} />
 ```
           
 Specify decimal NumberInput with increment/decrement step of 0.1 and precision of 1 
 
-```js
+```jsx
 <NumberInput valueType="decimal" stepAmount={0.1} precision={1} value={this.state.value} onChange={this.changeValue} />
 ```
 
@@ -195,7 +196,7 @@ styles.css
     
 Applying CSS using className
 
-```js
+```jsx
 <NumberInput className="numberInput" value={this.state.value} onChange={this.changeValue} />
 ```
     
@@ -214,6 +215,7 @@ MIT License
 [license]: https://github.com/pksilen/semantic-ui-react-numberinput/blob/master/LICENSE
 [version-badge]: https://img.shields.io/npm/v/semantic-ui-react-numberinput.svg?style=flat-square
 [package]: https://www.npmjs.com/package/semantic-ui-react-numberinput
+[downloads]: https://img.shields.io/npm/dm/semantic-ui-react-numberinput
 [build]: https://img.shields.io/circleci/project/github/pksilen/semantic-ui-react-numberinput/master.svg?style=flat-square
 [circleci]: https://circleci.com/gh/pksilen/semantic-ui-react-numberinput/tree/master
 [coverage]: https://img.shields.io/codecov/c/github/pksilen/semantic-ui-react-numberinput/master.svg?style=flat-square

@@ -48,32 +48,42 @@ class NumberInputExample extends React.Component {
 }
 ```
     
-   Render NumberInput with step buttons on left and right side of the input (this is default behavior, if buttonPlacement is not specified)
+Render NumberInput with step buttons on left and right side of the input (this is default behavior, if buttonPlacement is not specified)
      
 ```js
 <NumberInput buttonPlacement="leftAndRight" value={this.state.value} onChange={this.changeValue} />
 ```
          
-   Render NumberInput with step buttons on the right side of the input
-                      
-    <NumberInput buttonPlacement="right" value={this.state.value} onChange={this.changeValue} />
+Render NumberInput with step buttons on the right side of the input
+
+```js
+<NumberInput buttonPlacement="right" value={this.state.value} onChange={this.changeValue} />
+```
     
-   Specify allowed number range to be between 0 and 100
+Specify allowed number range to be between 0 and 100
          
-    <NumberInput minValue={0} maxValue={100} value={this.state.value} onChange={this.changeValue} />
+```js
+<NumberInput minValue={0} maxValue={100} value={this.state.value} onChange={this.changeValue} />
+```
          
-   Specify buttons to increment/decrement by 5 
-                  
-    <NumberInput stepAmount={5} value={this.state.value} onChange={this.changeValue} />
+Specify buttons to increment/decrement by 5 
+
+```js
+<NumberInput stepAmount={5} value={this.state.value} onChange={this.changeValue} />
+```
          
-   Specify decimal NumberInput with increment/decrement step of 0.25 and default precision of 2 
-                   
-    <NumberInput valueType="decimal" stepAmount={0.25} value={this.state.value} onChange={this.changeValue} />
+Specify decimal NumberInput with increment/decrement step of 0.25 and default precision of 2 
+
+```js
+<NumberInput valueType="decimal" stepAmount={0.25} value={this.state.value} onChange={this.changeValue} />
+```
           
-   Specify decimal NumberInput with increment/decrement step of 0.1 and precision of 1 
-                     
-    <NumberInput valueType="decimal" stepAmount={0.1} precision={1} value={this.state.value} onChange={this.changeValue} />
-    
+Specify decimal NumberInput with increment/decrement step of 0.1 and precision of 1 
+
+```js
+<NumberInput valueType="decimal" stepAmount={0.1} precision={1} value={this.state.value} onChange={this.changeValue} />
+```
+
 More examples in demo/demo.js file
 
 ## Mandatory NumberInput properties      
@@ -162,24 +172,28 @@ More examples in demo/demo.js file
 ## Styling example
 ![Example image of numberInput](https://raw.githubusercontent.com/pksilen/semantic-ui-react-numberinput/master/example/styled_number_input.png)
 
-   styles.css
-   
-    .numberInput .ui.button {
-      background-color: red;
-      border-radius: 0 !important;
-      color: white;
-    }
+styles.css
+
+```css
+.numberInput .ui.button {
+  background-color: red;
+  border-radius: 0 !important;
+  color: white;
+}
+
+.numberInput .ui.input > input {
+  border-color: red;
+  color: red;
+  font-weight: bold;
+  width: 50px;
+}
+```
     
-    .numberInput .ui.input > input {
-      border-color: red;
-      color: red;
-      font-weight: bold;
-      width: 50px;
-    }
-    
-   Applying CSS using className
-   
-    <NumberInput className="numberInput" value={this.state.value} onChange={this.changeValue} />
+Applying CSS using className
+
+```js
+<NumberInput className="numberInput" value={this.state.value} onChange={this.changeValue} />
+```
     
 ## License
 MIT License

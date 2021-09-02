@@ -134,24 +134,26 @@ More examples in demo/demo.js file
     valueType: 'integer' | 'decimal'
         
 ## Default values for optional properties
-    allowEmptyValue: false,
-    allowMouseWheel: false,
-    buttonPlacement: 'leftAndRight',
-    id: undefined,
-    className: undefined,
-    defaultValue: undefined,
-    disabled: false,
-    doubleClickStepAmount: 0,
-    minValue: 0,
-    maxValue: 9999999999,
-    maxLength: 10,
-    placeholder: 'Enter a value',
-    precision: 2,
-    showError: false,
-    showTooltips: true,
-    size: 'small',
-    stepAmount: 1,
-    valueType: 'integer'
+```js
+allowEmptyValue: false,
+allowMouseWheel: false,
+buttonPlacement: 'leftAndRight',
+id: undefined,
+className: undefined,
+defaultValue: undefined,
+disabled: false,
+doubleClickStepAmount: 0,
+minValue: 0,
+maxValue: 9999999999,
+maxLength: 10,
+placeholder: 'Enter a value',
+precision: 2,
+showError: false,
+showTooltips: true,
+size: 'small',
+stepAmount: 1,
+valueType: 'integer'
+```
     
 ## Keyboard actions
 

@@ -80,8 +80,16 @@ export default class NumberInput extends React.Component<Props, {}> {
     decrement: 0
   };
 
-  decrementOrIncrementValue = (buttonType: ButtonType, hasDoubleClicksEnabled: boolean = true) => {
+  decrementOrIncrementValue = (
+    event: SyntheticMouseEvent<HTMLButtonElement> | null,
+    buttonType: ButtonType,
+    hasDoubleClicksEnabled: boolean = true
+  ) => {
     const { doubleClickStepAmount, stepAmount } = this.props;
+
+    if (event) {
+      event.stopPropagation();
+    }
 
     if (this.timeoutIDMap[buttonType]) {
       window.clearTimeout(this.timeoutIDMap[buttonType]);
@@ -139,9 +147,9 @@ export default class NumberInput extends React.Component<Props, {}> {
       case 'ArrowUp':
       case '+':
         if (event.ctrlKey) {
-          _.times(2, () => this.decrementOrIncrementValue('increment'));
+          _.times(2, () => this.decrementOrIncrementValue(null, 'increment'));
         } else {
-          this.decrementOrIncrementValue('increment', false);
+          this.decrementOrIncrementValue(null, 'increment', false);
         }
         handled = true;
         break;
@@ -149,20 +157,20 @@ export default class NumberInput extends React.Component<Props, {}> {
       case 'ArrowDown':
       case '-':
         if (event.ctrlKey) {
-          _.times(2, () => this.decrementOrIncrementValue('decrement'));
+          _.times(2, () => this.decrementOrIncrementValue(null, 'decrement'));
         } else {
-          this.decrementOrIncrementValue('decrement', false);
+          this.decrementOrIncrementValue(null, 'decrement', false);
         }
         handled = true;
         break;
 
       case 'PageUp':
-        _.times(2, () => this.decrementOrIncrementValue('increment'));
+        _.times(2, () => this.decrementOrIncrementValue(null, 'increment'));
         handled = true;
         break;
 
       case 'PageDown':
-        _.times(2, () => this.decrementOrIncrementValue('decrement'));
+        _.times(2, () => this.decrementOrIncrementValue(null, 'decrement'));
         handled = true;
         break;
 
@@ -222,7 +230,9 @@ export default class NumberInput extends React.Component<Props, {}> {
         style={buttonStyle}
         type="button"
         icon={ButtonUtils.getButtonIconName(buttonType, buttonPlacement)}
-        onClick={() => this.decrementOrIncrementValue(buttonType)}
+        onClick={(event: SyntheticMouseEvent<HTMLButtonElement>) =>
+          this.decrementOrIncrementValue(event, buttonType)
+        }
         disabled={disabled || ButtonUtils.isDisabledButton(buttonType, this.props)}
       />
     );

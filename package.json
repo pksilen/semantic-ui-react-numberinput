@@ -60,7 +60,7 @@
     "eslint-plugin-react-hooks": "^1.7.0",
     "flow-bin": "^0.105.2",
     "flow-typed": "^3.8.0",
-    "jest": "^24.9.0",
+    "jest": "^29.3.1",
     "prettier": "^1.18.2",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",

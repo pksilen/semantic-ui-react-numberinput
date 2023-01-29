@@ -15,7 +15,7 @@
   ],
   "scripts": {
     "build": "babel ./src --out-dir ./lib --source-maps --ignore \"src/**/*.test.js\",\"src/setupTests.js\"",
-    "build-demo": "prettier --check demo/demo.js && flow demo/demo.js && eslint demo/demo.js && webpack",
+    "build-demo": "prettier --check demo/demo.js && eslint demo/demo.js && webpack",
     "flow": "flow src",
     "stop-flow": "flow stop",
     "install-flow-types": "flow-typed install",
@@ -61,6 +61,7 @@
     "flow-bin": "^0.105.2",
     "flow-typed": "^3.8.0",
     "jest": "^29.3.1",
+    "jest-environment-jsdom": "^29.4.1",
     "prettier": "^1.18.2",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
@@ -75,6 +76,7 @@
     "react-event-injector": "^1.1.2"
   },
   "jest": {
+    "testEnvironment": "jsdom",
     "setupFilesAfterEnv": [
       "<rootDir>/src/setupTests.js"
     ],

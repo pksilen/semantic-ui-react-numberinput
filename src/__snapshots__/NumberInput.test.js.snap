@@ -7,7 +7,7 @@ exports[`render() should render component correctly when buttonPlacement is "lef
 >
   <div
     style={
-      Object {
+      {
         "display": "flex",
       }
     }
@@ -19,7 +19,7 @@ exports[`render() should render component correctly when buttonPlacement is "lef
       onClick={[Function]}
       size="large"
       style={
-        Object {
+        {
           "borderBottomRightRadius": 0,
           "borderTopRightRadius": 0,
           "margin": 0,
@@ -42,7 +42,7 @@ exports[`render() should render component correctly when buttonPlacement is "lef
           onKeyDown={[Function]}
           placeholder="testPlaceholder"
           style={
-            Object {
+            {
               "borderRadius": 0,
               "textAlign": "right",
             }
@@ -59,7 +59,7 @@ exports[`render() should render component correctly when buttonPlacement is "lef
       onClick={[Function]}
       size="large"
       style={
-        Object {
+        {
           "borderBottomLeftRadius": 0,
           "borderTopLeftRadius": 0,
           "margin": 0,
@@ -80,7 +80,7 @@ exports[`render() should render component correctly when buttonPlacement is "rig
 >
   <div
     style={
-      Object {
+      {
         "display": "flex",
       }
     }
@@ -98,7 +98,7 @@ exports[`render() should render component correctly when buttonPlacement is "rig
           onKeyDown={[Function]}
           placeholder="testPlaceholder"
           style={
-            Object {
+            {
               "borderBottomRightRadius": 0,
               "borderTopRightRadius": 0,
               "textAlign": "right",
@@ -111,7 +111,7 @@ exports[`render() should render component correctly when buttonPlacement is "rig
     </div>
     <div
       style={
-        Object {
+        {
           "display": "flex",
           "flexDirection": "column",
         }
@@ -124,7 +124,7 @@ exports[`render() should render component correctly when buttonPlacement is "rig
         onClick={[Function]}
         size="large"
         style={
-          Object {
+          {
             "borderBottomLeftRadius": 0,
             "borderBottomRightRadius": 0,
             "borderTopLeftRadius": 0,
@@ -144,7 +144,7 @@ exports[`render() should render component correctly when buttonPlacement is "rig
         onClick={[Function]}
         size="large"
         style={
-          Object {
+          {
             "borderBottomLeftRadius": 0,
             "borderTopLeftRadius": 0,
             "borderTopRightRadius": 0,
@@ -166,7 +166,7 @@ exports[`render() should render component correctly when it is disabled 1`] = `
 <div>
   <div
     style={
-      Object {
+      {
         "display": "flex",
       }
     }
@@ -178,7 +178,7 @@ exports[`render() should render component correctly when it is disabled 1`] = `
       onClick={[Function]}
       size="small"
       style={
-        Object {
+        {
           "borderBottomRightRadius": 0,
           "borderTopRightRadius": 0,
           "margin": 0,
@@ -201,7 +201,7 @@ exports[`render() should render component correctly when it is disabled 1`] = `
           onKeyDown={[Function]}
           placeholder="Enter a value"
           style={
-            Object {
+            {
               "borderRadius": 0,
               "textAlign": "right",
             }
@@ -218,7 +218,7 @@ exports[`render() should render component correctly when it is disabled 1`] = `
       onClick={[Function]}
       size="small"
       style={
-        Object {
+        {
           "borderBottomLeftRadius": 0,
           "borderTopLeftRadius": 0,
           "margin": 0,
@@ -236,7 +236,7 @@ exports[`render() should render component correctly when showError is true 1`] =
 <div>
   <div
     style={
-      Object {
+      {
         "display": "flex",
       }
     }
@@ -248,7 +248,7 @@ exports[`render() should render component correctly when showError is true 1`] =
       onClick={[Function]}
       size="small"
       style={
-        Object {
+        {
           "borderBottomRightRadius": 0,
           "borderTopRightRadius": 0,
           "margin": 0,
@@ -271,7 +271,7 @@ exports[`render() should render component correctly when showError is true 1`] =
           onKeyDown={[Function]}
           placeholder="Enter a value"
           style={
-            Object {
+            {
               "borderRadius": 0,
               "textAlign": "right",
             }
@@ -288,7 +288,7 @@ exports[`render() should render component correctly when showError is true 1`] =
       onClick={[Function]}
       size="small"
       style={
-        Object {
+        {
           "borderBottomLeftRadius": 0,
           "borderTopLeftRadius": 0,
           "margin": 0,
@@ -306,7 +306,7 @@ exports[`render() should render component correctly with button tooltips when do
 <div>
   <div
     style={
-      Object {
+      {
         "display": "flex",
       }
     }
@@ -328,7 +328,7 @@ exports[`render() should render component correctly with button tooltips when do
           onClick={[Function]}
           size="small"
           style={
-            Object {
+            {
               "borderBottomRightRadius": 0,
               "borderTopRightRadius": 0,
               "margin": 0,
@@ -353,7 +353,7 @@ exports[`render() should render component correctly with button tooltips when do
           onKeyDown={[Function]}
           placeholder="Enter a value"
           style={
-            Object {
+            {
               "borderRadius": 0,
               "textAlign": "right",
             }
@@ -380,7 +380,7 @@ exports[`render() should render component correctly with button tooltips when do
           onClick={[Function]}
           size="small"
           style={
-            Object {
+            {
               "borderBottomLeftRadius": 0,
               "borderTopLeftRadius": 0,
               "margin": 0,
@@ -400,7 +400,7 @@ exports[`render() should render component correctly without button tooltips when
 <div>
   <div
     style={
-      Object {
+      {
         "display": "flex",
       }
     }
@@ -412,7 +412,7 @@ exports[`render() should render component correctly without button tooltips when
       onClick={[Function]}
       size="small"
       style={
-        Object {
+        {
           "borderBottomRightRadius": 0,
           "borderTopRightRadius": 0,
           "margin": 0,
@@ -435,7 +435,7 @@ exports[`render() should render component correctly without button tooltips when
           onKeyDown={[Function]}
           placeholder="Enter a value"
           style={
-            Object {
+            {
               "borderRadius": 0,
               "textAlign": "right",
             }
@@ -452,7 +452,7 @@ exports[`render() should render component correctly without button tooltips when
       onClick={[Function]}
       size="small"
       style={
-        Object {
+        {
           "borderBottomLeftRadius": 0,
           "borderTopLeftRadius": 0,
           "margin": 0,

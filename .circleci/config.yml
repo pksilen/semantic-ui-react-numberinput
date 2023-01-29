@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/node:10.16
+      - image: cimg/node:lts
     environment:
       TZ: 'Europe/Helsinki'
     steps:
@@ -11,7 +11,7 @@ jobs:
           key: dependency-cache-{{ checksum "package.json" }}
       - run:
           name: Install dependencies
-          command: npm install
+          command: npm install --force
       - save_cache:
           key: dependency-cache-{{ checksum "package.json" }}
           paths:
